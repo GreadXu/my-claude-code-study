@@ -4,7 +4,23 @@
       "Bash(git push:*)",
       "Bash(git config:*)",
       "Bash(/create-skill:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(ping:*)",
+      "Bash(curl:*)",
+      "Bash(echo:*)",
+      "Bash(export:*)",
+      "Bash(npm config:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(npm install:*)",
+      "Bash(cygpath:*)",
+      "Bash(npm view:*)",
+      "Bash(npm bin:*)",
+      "Bash(powershell:*)",
+      "Bash(where.exe claude:*)",
+      "Bash(cmd.exe:*)",
+      "Bash(find .:*)",
+      "Bash(git tag:*)",
+      "Bash(git:*)"
     ]
   }
 }
