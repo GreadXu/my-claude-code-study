@@ -35,9 +35,14 @@
   - 01-基础入门：claude-code-core, mcp-basics
   - 02-进阶探索：agent-sdk, mcp-advanced, everything-claude-code
   - 03-实战应用：cc-switch, spec-kit, projects
-- 🔧 自动化脚本系统（init.sh, sync.sh, migrate.sh）
+- 🔧 自动化脚本系统（init.sh, sync.sh, migrate.sh, backup.sh）
 - 📖 团队协作指南（TEAM_GUIDE.md）
 - ✅ .gitignore 个人数据保护
+- 📝 .gitattributes 统一行尾符配置
+
+### 修复 (Fixed)
+- 🐛 修复 backup.sh 在 Windows 环境下的兼容性问题
+- 🛡️ 清理 settings.local.json 的 Git 追踪状态
 
 ### 变更 (Changed)
 - 重构 PROGRESS.md 结构，支持优先级分类

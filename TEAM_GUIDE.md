@@ -8,7 +8,7 @@
 
 ### 步骤 1：Fork 主仓库
 
-1. 访问主仓库：`https://github.com/YOUR_ORG/YOUR_REPO`
+1. 访问主仓库：`https://github.com/GreadXu/claude-code-study`
 2. 点击右上角 **Fork** 按钮
 3. Fork 将创建你自己的副本仓库
 
@@ -16,8 +16,8 @@
 
 ```bash
 # 替换 YOUR_USERNAME 为你的 GitHub 用户名
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/YOUR_USERNAME/claude-code-study.git
+cd claude-code-study
 ```
 
 ### 步骤 3：初始化个人数据
@@ -351,9 +351,8 @@ bash scripts/backup.sh
 ## 📞 获取帮助
 
 - 📖 查看完整文档：[README.md](./README.md)
-- 💬 讨论区：[GitHub Discussions](https://github.com/YOUR_ORG/YOUR_REPO/discussions)
-- 🐛 问题报告：[GitHub Issues](https://github.com/YOUR_ORG/YOUR_REPO/issues)
-- 📧 联系维护者：[maintainer@example.com](mailto:maintainer@example.com)
+- 💬 讨论区：[GitHub Discussions](https://github.com/GreadXu/claude-code-study/discussions)
+- 🐛 问题报告：[GitHub Issues](https://github.com/GreadXu/claude-code-study/issues)
 
 ---
 
