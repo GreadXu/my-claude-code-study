@@ -20,7 +20,8 @@
       "Bash(cmd.exe:*)",
       "Bash(find .:*)",
       "Bash(git tag:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Bash(bash:*)"
     ]
   }
 }

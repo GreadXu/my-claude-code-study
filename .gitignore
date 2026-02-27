@@ -12,3 +12,30 @@ desktop.ini
 # 临时文件
 *.tmp
 *.log
+
+# === 个人学习数据 ===
+# 进度追踪（个人数据，由模板初始化）
+PROGRESS.md
+KNOWLEDGE_CACHE.md
+LEARNING_BOOKMARKS.md
+
+# 模块个人数据（由模板初始化）
+**/checklist.md
+**/notes.md
+
+# 知识缓存目录（个人本地缓存）
+**/knowledge/
+
+# Claude 个人配置
+.claude/LEARNING_BOOKMARKS.md
+.claude/KNOWLEDGE_CACHE.md
+.claude/settings.local.json
+
+# 备份文件
+*.backup
+*.bak
+.backups/
+
+# === 模板文件例外（系统文件，必须追踪）===
+!.templates/
+!.templates/**/*.md
