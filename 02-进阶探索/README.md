@@ -1,22 +1,23 @@
 # 02-进阶探索
 
-> **预计时长**：3-4 周（完整模式）
+> **预计时长**：1.5-2 周（完整模式）
 > **难度等级**：⭐⭐⭐ 进阶
-> **更新日期**：2026-02-26
+> **更新日期**：2026-02-28
 
 ---
 
 ## 阶段概述
 
-本阶段深入 Claude Code 生态的高级主题，包括 Agent SDK 开发、MCP 高级应用，以及生态资源全景探索。通过本阶段学习，你将具备开发自定义扩展和深入应用的能力。
+本阶段深入 Claude Code 生态的高级主题，聚焦于**配置和使用** AI 能力而非深入开发。通过本阶段学习，你将掌握 Agent 配置、MCP 高级特性配置、OpenClaw AI 编排平台使用，以及生态资源评估能力。
 
 ## 学习模块
 
 | 模块 | 优先级 | 学习模式 | 状态 |
 |------|--------|----------|------|
-| [agent-sdk](./agent-sdk/) | P1 🟡 推荐 | - | 未开始 |
-| [mcp-advanced](./mcp-advanced/) | P2 🟢 可选 | - | 未开始 |
-| [everything-claude-code](./everything-claude-code/) | P3 🔵 了解 | - | 未开始 |
+| [agent-sdk](./agent-sdk/) | P2 🟢 可选 | - | 未开始 |
+| [mcp-advanced](./mcp-advanced/) | P3 🔵 了解 | - | 未开始 |
+| [openclaw-ecosystem](./openclaw-ecosystem/) | P1 🟡 推荐 | - | 未开始 |
+| [everything-claude-code](./everything-claude-code/) | P1 🟡 推荐 | - | 未开始 |
 
 ---
 
@@ -33,16 +34,18 @@
 ## 时间规划
 
 ### 快速模式（仅理论）
-- agent-sdk：约 2 天
-- mcp-advanced：约 1 天
+- agent-sdk：约 1 天
+- mcp-advanced：约 0.5 天
+- openclaw-ecosystem：约 0.5-1 天
 - everything-claude-code：约 0.5 天
-- **合计**：约 3.5 天
+- **合计**：约 2.5-3 天
 
 ### 完整模式（理论+实践）
-- agent-sdk：约 2 周
-- mcp-advanced：约 1.5 周
-- everything-claude-code：约 3 天
-- **合计**：约 3-4 周
+- agent-sdk：约 2-3 天
+- mcp-advanced：约 2 天
+- openclaw-ecosystem：约 2-3 天
+- everything-claude-code：约 1 天
+- **合计**：约 1.5-2 周
 
 ---
 
@@ -50,23 +53,29 @@
 
 完成本阶段后，你将能够：
 
-### agent-sdk [P1]
-- [ ] 理解 Agent SDK 的架构设计
-- [ ] 掌握 Agent 开发的核心模式
-- [ ] 能够开发自定义 Agent
-- [ ] 完成 Agent 的集成和测试
+### agent-sdk [P2]
+- [ ] 理解 Agent 的核心概念和工作原理
+- [ ] 了解常用 Agent 类型和适用场景
+- [ ] 学习配置和使用现有 Agent
+- [ ] 了解 Agent 工具集成方式
 
-### mcp-advanced [P2]
-- [ ] 掌握 MCP 高级特性
-- [ ] 能够开发自定义 MCP 服务器
-- [ ] 理解 MCP 的调试技巧
-- [ ] 完成服务器发布
+### mcp-advanced [P3]
+- [ ] 了解 MCP 高级特性 (Resources, Prompts)
+- [ ] 理解服务器架构
+- [ ] 学习配置高级服务器选项
+- [ ] 了解服务器开发流程（理论）
 
-### everything-claude-code [P3]
-- [ ] 了解 Claude Code 生态全景
-- [ ] 熟悉各类资源和工具
-- [ ] 掌握资源发现方法
-- [ ] 完成资源清单整理
+### openclaw-ecosystem [P1]
+- [ ] 理解 OpenClaw AI 编排平台架构
+- [ ] 掌握 Skills 插件系统的配置与使用
+- [ ] 部署本地 LLM 并优化成本
+- [ ] 实现 OpenClaw + Claude Code 协作
+
+### everything-claude-code [P1]
+- [ ] 评估各类 AI 工具的适用场景
+- [ ] 测试工具配置难度
+- [ ] 整理常用工具清单
+- [ ] 完成资源推荐清单
 
 ---
 
@@ -79,9 +88,10 @@
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
 
 ### 推荐阅读顺序
-1. 先学习 agent-sdk，掌握扩展开发能力
-2. 再学习 mcp-advanced，深入 MCP 协议
-3. 最后浏览 everything-claude-code，拓展视野
+1. 先学习 openclaw-ecosystem，掌握 AI 编排和协作
+2. 再学习 everything-claude-code，评估各类工具
+3. 然后根据兴趣学习 agent-sdk（了解 Agent 配置）
+4. 最后浏览 mcp-advanced（了解 MCP 高级配置）
 
 ---
 
@@ -94,10 +104,10 @@
 ## 常见问题
 
 ### Q: 必须按顺序学习吗？
-**A**: 建议按顺序学习。agent-sdk 和 mcp-advanced 有一定独立性，但 everything-claude-code 建议最后学习作为拓展。
+**A**: 建议按推荐的 P1 → P2 → P3 顺序学习。openclaw-ecosystem 和 everything-claude-code 是重点模块。
 
-### Q: 没有 TypeScript 基础可以学吗？
-**A**: agent-sdk 和 mcp-advanced 需要 TypeScript 基础。如果时间有限，可以先选择快速模式了解概念，再补充 TypeScript 知识。
+### Q: 不想开发，只想配置和使用，可以吗？
+**A**: 完全可以。本阶段重点已调整为「配置使用」而非「开发」。P1 模块都是配置导向的。
 
-### Q: 完整模式的项目难度如何？
-**A**: 完整模式的项目有一定挑战性，建议确保有充足时间，并可以随时在社区寻求帮助。
+### Q: agent-sdk 和 mcp-advanced 现在是什么定位？
+**A**: 这两个模块已降为 P2/P3，主要用于了解概念。如果你想深入开发，可以选学；否则以快速模式了解即可。

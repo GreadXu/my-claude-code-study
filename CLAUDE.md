@@ -31,6 +31,7 @@
    - `mcp-basics` → `01-基础入门/mcp-basics`
    - `agent-sdk` → `02-进阶探索/agent-sdk`
    - `mcp-advanced` → `02-进阶探索/mcp-advanced`
+   - `openclaw-ecosystem` → `02-进阶探索/openclaw-ecosystem`
    - `everything-claude-code` → `02-进阶探索/everything-claude-code`
    - `cc-switch` → `03-实战应用/cc-switch`
    - `spec-kit` → `03-实战应用/spec-kit`
@@ -495,6 +496,7 @@
 | mcp-basics | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
 | agent-sdk | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
 | mcp-advanced | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
+| openclaw-ecosystem | OpenClaw/openclaw | docs.openclaw.org | 每次询问 |
 | everything-claude-code | - | - | 每次询问 |
 | cc-switch | - | - | 每次询问 |
 | spec-kit | anthropics/spec-kit | github.com/anthropics | 每次询问 |

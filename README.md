@@ -41,16 +41,17 @@
     │  约 30% 时间         │  完整学习体验                                 │
     └─────────────────────────────────────────────────────────────────────┘
 
-    01-基础入门 (2-3周) ████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    01-基础入门 (1-1.5周) ████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
     ├─ claude-code-core    [P0🔴] Claude Code 核心概念与使用
     └─ mcp-basics          [P1🟡] MCP 基础入门
 
-    02-进阶探索 (3-4周) ░░░░░░░░░░░░░░░░░░░░░░░████████░░░░░░░░░░░░░░░░░░░
-    ├─ agent-sdk           [P1🟡] Claude Agent SDK 开发
-    ├─ mcp-advanced        [P2🟢] MCP 高级应用
-    └─ everything-claude-code [P3🔵] 资源集合研究
+    02-进阶探索 (1.5-2周) ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██████████░░░░░░░
+    ├─ agent-sdk           [P2🟢] Agent 配置与使用
+    ├─ mcp-advanced        [P3🔵] MCP 高级配置
+    ├─ openclaw-ecosystem  [P1🟡] OpenClaw 生态系统
+    └─ everything-claude-code [P1🟡] 资源集合研究
 
-    03-实战应用 (4-6周) ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░████████░░░░░░░
+    03-实战应用 (2-3周) ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░████████░░░░░
     ├─ cc-switch           [P2🟢] 配置管理工具技术探索
     ├─ spec-kit            [P2🟢] 规范驱动开发
     └─ projects            [P1🟡] 综合实战项目
@@ -62,9 +63,9 @@
 
 | 阶段 | 预计时长 | 模块数 | 说明 |
 |------|----------|--------|------|
-| [01-基础入门](./01-基础入门/) | 2-3 周 | 2 | Claude Code 核心与 MCP 基础 |
-| [02-进阶探索](./02-进阶探索/) | 3-4 周 | 3 | Agent SDK 与 MCP 高级 |
-| [03-实战应用](./03-实战应用/) | 4-6 周 | 3 | 工具探索与综合项目 |
+| [01-基础入门](./01-基础入门/) | 1-1.5 周 | 2 | Claude Code 核心与 MCP 基础 |
+| [02-进阶探索](./02-进阶探索/) | 1.5-2 周 | 4 | Agent SDK、OpenClaw 生态、MCP 高级 |
+| [03-实战应用](./03-实战应用/) | 2-3 周 | 3 | 工具探索与综合项目 |
 
 **当前进度**：查看 [PROGRESS.md](./PROGRESS.md) 了解详细进度
 
@@ -177,20 +178,21 @@
 ### 最小可行路径（MVP）
 仅完成 P0 必学模块：
 - `claude-code-core` [P0]
-- **时间**：约 1 周
+- **时间**：约 3-4 天
 
 ### 核心能力路径
 完成 P0 + P1 模块：
 - `claude-code-core` [P0]
 - `mcp-basics` [P1]
-- `agent-sdk` [P1]
+- `openclaw-ecosystem` [P1]
+- `everything-claude-code` [P1]
 - `projects` [P1]
-- **时间**：约 6-8 周
+- **时间**：约 3-4 周
 
 ### 全栈学习路径
-完成所有 P0/P1/P2 模块：
-- 核心能力路径 + `mcp-advanced` [P2] + `cc-switch` [P2] + `spec-kit` [P2]
-- **时间**：约 10-14 周
+完成所有 P0/P1/P2/P3 模块：
+- 核心能力路径 + `agent-sdk` [P2] + `cc-switch` [P2] + `spec-kit` [P2] + `mcp-advanced` [P3]
+- **时间**：约 5-7 周
 
 ---
 
@@ -245,9 +247,10 @@ claude-code-study/
 │
 ├── 02-进阶探索/                 # 进阶探索阶段
 │   ├── README.md
-│   ├── agent-sdk/               # Agent SDK 开发 [P1🟡]
-│   ├── mcp-advanced/            # MCP 高级应用 [P2🟢]
-│   └── everything-claude-code/  # 资源集合研究 [P3🔵]
+│   ├── agent-sdk/               # Agent 配置与使用 [P2🟢]
+│   ├── mcp-advanced/            # MCP 高级配置 [P3🔵]
+│   ├── openclaw-ecosystem/      # OpenClaw 生态系统 [P1🟡]
+│   └── everything-claude-code/  # 资源集合研究 [P1🟡]
 │
 ├── 03-实战应用/                 # 实战应用阶段
 │   ├── README.md
@@ -273,6 +276,7 @@ claude-code-study/
 
 ### 生态资源
 - [everything-claude-code](https://github.com/affaan-m/everything-claude-code) - Claude Code 全面资源集合
+- [OpenClaw](https://github.com/OpenClaw/openclaw) - 本地优先 AI 助手平台
 - [cc-switch](https://github.com/farion1231/cc-switch) - CC 配置管理工具
 - [spec-kit](https://github.com/github/spec-kit) - GitHub 规范工具包
 
@@ -354,4 +358,4 @@ claude-code-study/
 
 ---
 
-*创建于 2026-02-26 | 最后更新 2026-02-27*
+*创建于 2026-02-26 | 最后更新 2026-02-28*
