@@ -186,7 +186,7 @@
 - `mcp-basics` [P1]
 - `openclaw-ecosystem` [P1]
 - `everything-claude-code` [P1]
-- `projects` [P1]
+- `projects/feishu-learning-assistant` [P1] - 飞书学习助手实战
 - **时间**：约 3-4 周
 
 ### 全栈学习路径
@@ -363,7 +363,9 @@ claude-code-study/
 | 2026-02-27 | - | 团队协作系统 | 实施 Fork + upstream 工作流和模板系统 |
 | 2026-03-01 | claude-code-core | 模块完成 | 🎉 claude-code-core 模块 100% 完成！ |
 | 2026-03-01 | - | 文件完整性检查 | 核对 CLAUDE.md 和项目文件完整性 |
+| 2026-03-03 | - | 版本 1.3.0 | 学习计划同步功能 |
+| 2026-03-03 | projects | feishu-learning-assistant | 飞书学习助手实战项目 |
 
 ---
 
-*创建于 2026-02-26 | 最后更新 2026-03-01*
+*创建于 2026-02-26 | 最后更新 2026-03-03*
