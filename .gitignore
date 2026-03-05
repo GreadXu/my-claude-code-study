@@ -58,3 +58,4 @@ desktop.ini
 # === 模板文件例外（系统文件，必须追踪）===
 !.templates/
 !.templates/**/*.md
+.claude/settings.local.json
