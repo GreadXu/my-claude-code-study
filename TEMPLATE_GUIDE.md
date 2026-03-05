@@ -1,18 +1,44 @@
-# 团队协作指南
+# 模板使用指南
 
-> 本指南面向参与 Claude Code 学习计划的团队成员，说明如何使用 Fork + upstream 工作流进行协作学习。
+> 本指南面向使用 AI 技术学习模板的用户，说明如何使用模板进行个性化学习。
+
+---
+
+## 📦 两种使用模式
+
+本模板支持两种使用模式，你可以根据自己的需求选择：
+
+### 模式 A：Fork 模式（推荐）
+
+| 特性 | 说明 |
+|------|------|
+| **适合人群** | 想贡献改进、公开学习记录的用户 |
+| **优点** | 自动获取模板更新、可贡献代码、操作简单 |
+| **缺点** | 仓库必须公开（GitHub 免费版限制） |
+| **更新方式** | `git fetch upstream` + `git merge` |
+
+### 模式 B：Clone 模式（私有）
+
+| 特性 | 说明 |
+|------|------|
+| **适合人群** | 私有学习、不想公开学习记录的用户 |
+| **优点** | 完全私有、无需 GitHub 账号也可使用 |
+| **缺点** | 更新需手动操作（运行脚本） |
+| **更新方式** | `bash scripts/update-standalone.sh` |
 
 ---
 
 ## 🚀 快速开始
 
-### 步骤 1：Fork 主仓库
+### Fork 模式（推荐）
 
-1. 访问主仓库：`https://github.com/GreadXu/claude-code-study`
+#### 步骤 1：Fork 模板仓库
+
+1. 访问模板仓库：`https://github.com/GreadXu/claude-code-study`
 2. 点击右上角 **Fork** 按钮
 3. Fork 将创建你自己的副本仓库
 
-### 步骤 2：克隆你的仓库
+#### 步骤 2：克隆你的仓库
 
 ```bash
 # 替换 YOUR_USERNAME 为你的 GitHub 用户名
@@ -20,11 +46,38 @@ git clone https://github.com/YOUR_USERNAME/claude-code-study.git
 cd claude-code-study
 ```
 
-### 步骤 3：初始化个人数据
+### Clone 模式（私有）
+
+#### 步骤 1：直接克隆模板仓库
+
+```bash
+# 克隆模板仓库到本地
+git clone https://github.com/GreadXu/claude-code-study.git my-learning
+cd my-learning
+
+# 移除原始 origin（可选，避免误推送）
+git remote remove origin
+```
+
+#### 步骤 3：初始化个人数据
 
 ```bash
 # 运行初始化脚本
 bash scripts/init.sh
+```
+
+> **Clone 模式用户**：初始化时当被问及 upstream 配置时，可以跳过（选择 n）。
+
+#### 步骤 4（仅 Clone 模式）：配置更新脚本
+
+Clone 模式用户需要使用 `update-standalone.sh` 脚本获取更新：
+
+```bash
+# 检查更新（不执行更新）
+bash scripts/update-standalone.sh --check
+
+# 执行更新
+bash scripts/update-standalone.sh
 ```
 
 该脚本将：
@@ -52,9 +105,9 @@ git remote -v | grep upstream
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      主仓库 (upstream)                      │
+│                      模板仓库 (upstream)                     │
 │         https://github.com/GreadXu/claude-code-study        │
-│                    （官方源码仓库）                          │
+│                    （官方模板源）                            │
 │                    ↓ 你 Fork 了它                            │
 └─────────────────────────────────────────────────────────────┘
                           ↓
@@ -69,9 +122,9 @@ git remote -v | grep upstream
 
 | 特性 | **origin** | **upstream** |
 |------|-----------|--------------|
-| **是什么** | 你 Fork 后的**个人仓库** | 原始的**主仓库** |
-| **所有权** | 你（完全控制） | 项目维护者 |
-| **用途** | 你向这里推送代码 | 从这里获取官方更新 |
+| **是什么** | 你 Fork 后的**个人仓库** | 原始的**模板仓库** |
+| **所有权** | 你（完全控制） | 模板维护者 |
+| **用途** | 你向这里推送代码 | 从这里获取模板更新 |
 | **可写入** | ✅ 是 | ❌ 否（只能 PR） |
 | **自动配置** | ✅ clone 时自动添加 | ❌ 需要手动添加 |
 
@@ -90,7 +143,7 @@ git remote -v
 # 从 origin 获取（你自己的仓库）
 git fetch origin
 
-# 从 upstream 获取（主仓库的更新）
+# 从 upstream 获取（模板仓库的更新）
 git fetch upstream
 
 # 推送到 origin（你自己的仓库）
@@ -110,28 +163,28 @@ upstream ─────────────────────> 你的
   │                              │
   │                              ▼
   └────────── Pull Request ──── origin
-     (贡献改进给主仓库)
+     (贡献改进给模板仓库)
 ```
 
 ### 记忆技巧
 
 > **origin** = **出发点** = 你自己的仓库，你的地盘你做主
 >
-> **upstream** = **上游源头** = 河流的源头，官方仓库的更新来源
+> **upstream** = **上游源头** = 河流的源头，模板仓库的更新来源
 
 ---
 
-## 🔄 同步上游更新
+## 🔄 同步模板更新
 
 ### 为什么需要同步？
 
-主仓库会定期更新：
+模板仓库会定期更新：
 - 🎉 新增学习模块
 - 🐛 修复模板错误
 - ✨ 改进学习流程
 - 📚 更新文档内容
 
-### 同步步骤
+### Fork 模式同步步骤
 
 ```bash
 # 运行同步脚本（推荐）
@@ -140,21 +193,21 @@ bash scripts/sync.sh
 
 该脚本将：
 - 自动备份你的个人数据
-- 获取上游更新
+- 获取模板更新
 - 显示变更日志
 - 智能合并（保留个人数据）
 - 检测冲突并提供处理提示
 
-### 手动同步（高级）
+### 手动同步（高级 - Fork 模式）
 
 ```bash
-# 1. 获取上游更新（upstream = 主仓库）
+# 1. 获取模板更新（upstream = 模板仓库）
 git fetch upstream
 
 # 2. 切换到主分支
 git checkout main
 
-# 3. 合并上游更改
+# 3. 合并模板更改
 git merge upstream/main
 
 # 4. 解决冲突（如有）
@@ -166,19 +219,53 @@ git commit -m "Merge upstream updates"
 git push origin main
 ```
 
+### Clone 模式同步步骤
+
+Clone 模式用户使用独立更新脚本：
+
+```bash
+# 运行独立更新脚本（推荐）
+bash scripts/update-standalone.sh
+```
+
+该脚本将：
+- 自动检测当前模式（Clone 模式）
+- 临时下载最新模板到临时目录
+- 智能合并更新（保留个人数据）
+- 显示更新摘要
+
+#### Clone 模式手动更新（高级）
+
+```bash
+# 1. 备份个人数据
+bash scripts/backup.sh
+
+# 2. 临时克隆最新模板
+git clone --depth 1 https://github.com/GreadXu/claude-code-study.git .temp-update
+
+# 3. 复制更新的文件（排除个人数据）
+# 注意：不要复制 PROGRESS.md、*/checklist.md、*/notes.md 等
+cp -r .temp-update/scripts/* scripts/
+cp -r .temp-update/.templates/* .templates/
+# ... 其他需要更新的文件
+
+# 4. 清理临时目录
+rm -rf .temp-update
+```
+
 ---
 
 ## 📂 文件分类说明
 
 ### 系统文件（Git 追踪）
 
-这些文件由主仓库维护，更新时会被覆盖：
+这些文件由模板仓库维护，更新时会被覆盖：
 
 | 类型 | 文件/目录 | 说明 |
 |------|-----------|------|
 | **配置** | `.gitignore`, `CLAUDE.md` | 系统配置 |
 | **模板** | `.templates/` | 初始化模板 |
-| **文档** | `README.md`, `TEAM_GUIDE.md` | 使用文档 |
+| **文档** | `README.md`, `TEMPLATE_GUIDE.md` | 使用文档 |
 | **脚本** | `scripts/` | 自动化脚本 |
 | **模块结构** | `XX-阶段名称/*/README.md` | 模块导学 |
 
@@ -197,6 +284,61 @@ git push origin main
 
 ---
 
+## 🛠️ 自定义学习计划
+
+### 添加自定义模块
+
+使用脚本快速创建新模块：
+
+```bash
+# 用法
+bash scripts/create-module.sh <模块名> <阶段> <优先级>
+
+# 示例：添加一个 React 学习模块
+bash scripts/create-module.sh react-basics 01-基础入门 P1
+
+# 示例：添加一个高级主题模块
+bash scripts/create-module.sh advanced-patterns 02-进阶探索 P2
+```
+
+脚本将自动：
+1. 创建模块目录结构
+2. 生成 README.md、checklist.md、notes.md 模板
+3. 提示你更新 CLAUDE.md 映射
+
+### 手动创建模块
+
+1. 创建模块目录：
+```bash
+mkdir -p 01-基础入门/my-module
+```
+
+2. 复制模板文件：
+```bash
+cp .templates/module/checklist.template.md 01-基础入门/my-module/checklist.md
+cp .templates/module/notes.template.md 01-基础入门/my-module/notes.md
+```
+
+3. 创建 README.md（参考 `.templates/module/README.template.md`）
+
+4. 更新 CLAUDE.md 中的模块路径映射
+
+### 配置知识来源
+
+在模块的 `README.md` 中添加学习资源：
+
+```markdown
+## 学习资源
+
+### 官方文档
+- [官方文档链接](https://example.com/docs)
+
+### 推荐教程
+- 你的教程链接...
+```
+
+---
+
 ## 🌿 分支策略
 
 ### 推荐工作流
@@ -207,9 +349,9 @@ main (你的主分支)
 └── 系统文件（与 upstream 同步）
 ```
 
-### 开发分支（可选）
+### 贡献分支（可选）
 
-如果你想贡献改进：
+如果你想向模板贡献改进：
 
 ```bash
 # 1. 创建功能分支
@@ -224,7 +366,7 @@ git commit -m "Add: my improvement"
 # 4. 推送到你的仓库
 git push origin feature/my-improvement
 
-# 5. 创建 Pull Request 到主仓库
+# 5. 创建 Pull Request 到模板仓库
 ```
 
 ---
@@ -260,11 +402,11 @@ git status
 
 ### 检测版本更新
 
-当主仓库发布新版本时，你会看到：
+当模板仓库发布新版本时，你会看到：
 
 ```bash
 $ bash scripts/sync.sh
-📢 发现新版本：v1.2.0 (当前: v1.1.0)
+📢 发现新版本：v2.0.0 (当前: v1.3.3)
 ```
 
 ### 运行迁移
@@ -287,22 +429,22 @@ bash scripts/migrate.sh
 
 ### Q1: 我的学习进度会丢失吗？
 
-**A: 不会。** 所有个人数据文件都被 `.gitignore` 保护，系统更新不会影响这些文件。
+**A: 不会。** 所有个人数据文件都被 `.gitignore` 保护，模板更新不会影响这些文件。
 
-### Q2: 如何提交我的学习进度？
+### Q2: 如何备份我的学习数据？
 
-**A: 不应该提交。** 学习进度是个人数据，不应该提交到 Git。如果你希望备份，可以使用 `scripts/backup.sh`。
+**A:** 使用备份脚本：
+```bash
+bash scripts/backup.sh
+```
 
 ### Q3: 我修改了系统文件，同步时会怎样？
 
-**A: 会被覆盖。** 系统文件的修改会在下次同步时被上游版本覆盖。如需贡献改进，请通过 Pull Request。
+**A: 会被覆盖。** 系统文件的修改会在下次同步时被模板版本覆盖。如需贡献改进，请通过 Pull Request。
 
-### Q4: 如何与团队成员分享我的笔记？
+### Q4: 如何添加自己的学习模块？
 
-**A: 有多种方式**：
-- 导出笔记文件直接分享
-- 创建独立的笔记仓库
-- 使用云文档协作工具
+**A:** 使用 `scripts/create-module.sh` 脚本，或手动创建模块目录并复制模板文件。详见"自定义学习计划"章节。
 
 ### Q5: init.sh 脚本运行失败怎么办？
 
@@ -341,7 +483,7 @@ git status
 # <<<<<<< HEAD
 # 你的更改
 # =======
-# 上游更改
+# 模板更改
 # >>>>>>> upstream/main
 
 # 3. 标记为已解决
@@ -385,7 +527,7 @@ git status
 
 ## 📚 最佳实践
 
-### 1. 定期同步上游
+### 1. 定期同步模板更新
 
 ```bash
 # 建议每周运行一次
@@ -410,6 +552,10 @@ bash scripts/backup.sh
 ### 5. 使用书签系统
 
 遇到需要深入探索的问题时，使用书签系统记录，确保能返回主线。
+
+### 6. 自定义学习内容
+
+根据你的学习目标，添加或删除模块，让模板适合你的需求。
 
 ---
 
@@ -443,4 +589,4 @@ bash scripts/backup.sh
 ---
 
 **创建日期**：2026-02-27
-**最后更新**：2026-02-27
+**最后更新**：2026-03-05

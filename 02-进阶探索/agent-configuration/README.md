@@ -1,10 +1,10 @@
-# agent-sdk Agent 配置与使用
+# agent-configuration Agent 配置与使用
 
 > **优先级**：P2 🟢 可选
 > **预计时长**：快速模式 1 天 | 完整模式 3-4 天
 > **难度等级**：⭐⭐ 进阶
-> **前置要求**：claude-code-core
-> **更新日期**：2026-02-28
+> **前置要求**：ai-tools-fundamentals
+> **更新日期**：2026-03-05
 
 ---
 

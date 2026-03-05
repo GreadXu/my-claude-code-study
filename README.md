@@ -1,6 +1,6 @@
-# Claude Code 学习笔记
+# AI 技术学习模板
 
-本仓库用于**系统学习 Claude Code 生态相关技术**，采用**理论+实践结合**的学习方式。
+一个**AI 驱动的学习框架**，帮助你系统化掌握任何技术领域。Fork 后即可自定义学习内容。
 
 <details>
 <summary>📖 核心概念速查（点击展开）</summary>
@@ -10,7 +10,7 @@
 | 术语 | 一句话解释 |
 |------|-----------|
 | **Fork** | 在 GitHub 上复制一个仓库到你的账号下 |
-| **upstream** | 原始的主仓库（官方源码） |
+| **upstream** | 原始的主仓库（模板源） |
 | **origin** | 你 Fork 后的个人仓库 |
 | **MCP** | Model Context Protocol，让 Claude 能使用外部工具的协议 |
 | **Tool Use** | Claude 调用工具（如编辑文件、运行命令）的能力 |
@@ -23,14 +23,16 @@
 
 ```
                     ┌─────────────────────────────────────────────┐
-                    │         Claude Code 学习计划总览            │
+                    │         AI 技术学习模板总览                  │
                     └─────────────────────────────────────────────┘
 
     ┌─────────────────────────────────────────────────────────────────────┐
-    │                        优先级说明                                    │
+    │                        核心价值                                      │
     ├─────────────────────────────────────────────────────────────────────┤
-    │  P0 🔴 必学  │  P1 🟡 推荐  │  P2 🟢 可选  │  P3 🔵 了解        │
-    │  核心基础    │  重要内容    │  兴趣驱动    │  理论浏览          │
+    │  📦 模板化设计  │  Fork 后自定义学习内容，适合任何技术领域           │
+    │  🤖 AI 辅助学习  │  Claude Code 驱动的进度追踪和知识管理             │
+    │  📊 进度追踪    │  自动化进度计算，可视化学习路径                    │
+    │  💾 知识缓存    │  本地缓存官方文档，减少重复获取                    │
     └─────────────────────────────────────────────────────────────────────┘
 
     ┌─────────────────────────────────────────────────────────────────────┐
@@ -42,20 +44,43 @@
     └─────────────────────────────────────────────────────────────────────┘
 
     01-基础入门 (1-1.5周) ████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-    ├─ claude-code-core    [P0🔴] Claude Code 核心概念与使用
-    └─ mcp-basics          [P1🟡] MCP 基础入门
+    ├─ ai-tools-fundamentals  [P0🔴] AI 工具基础
+    └─ mcp-protocol           [P1🟡] MCP 协议入门
 
     02-进阶探索 (1.5-2周) ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██████████░░░░░░░
-    ├─ agent-sdk           [P2🟢] Agent 配置与使用
-    ├─ mcp-advanced        [P3🔵] MCP 高级配置
-    ├─ openclaw-ecosystem  [P1🟡] OpenClaw 生态系统
-    └─ everything-claude-code [P1🟡] 资源集合研究
+    ├─ agent-configuration    [P2🟢] Agent 配置与使用
+    ├─ mcp-advanced-config    [P3🔵] MCP 高级配置
+    ├─ ai-orchestration       [P1🟡] AI 编排平台
+    └─ ai-resources-research  [P1🟡] AI 资源研究
 
     03-实战应用 (2-3周) ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░████████░░░░░
-    ├─ cc-switch           [P2🟢] 配置管理工具技术探索
-    ├─ spec-kit            [P2🟢] 规范驱动开发
-    └─ projects            [P1🟡] 综合实战项目
+    ├─ config-management      [P2🟢] 配置管理工具
+    ├─ spec-driven-dev        [P2🟢] 规范驱动开发
+    └─ practical-projects     [P1🟡] 综合实战项目
 ```
+
+---
+
+## 核心价值
+
+| 特性 | 说明 |
+|------|------|
+| **📦 模板化设计** | Fork 后即可自定义学习内容，添加你自己的学习模块 |
+| **🤖 AI 辅助学习** | Claude Code 驱动的进度追踪、书签导航、知识缓存 |
+| **📊 进度追踪** | 自动化进度计算，可视化学习路径，优先级管理 |
+| **💾 知识缓存** | 本地缓存官方文档，减少重复获取，提升学习效率 |
+| **🔒 数据隔离** | 学习进度和笔记完全本地管理，不会同步到 GitHub |
+
+---
+
+## 适用场景
+
+| 场景 | 说明 |
+|------|------|
+| **个人技术学习** | 系统化学习任何技术领域（AI、前端、后端、DevOps...） |
+| **团队培训** | 团队共同学习特定技术栈，统一学习路径 |
+| **课程管理** | 教师创建课程模板，学生 Fork 后跟踪学习进度 |
+| **技能认证准备** | 系统化准备技术认证考试 |
 
 ---
 
@@ -63,36 +88,36 @@
 
 | 阶段 | 预计时长 | 模块数 | 说明 |
 |------|----------|--------|------|
-| [01-基础入门](./01-基础入门/) | 1-1.5 周 | 2 | Claude Code 核心与 MCP 基础 |
-| [02-进阶探索](./02-进阶探索/) | 1.5-2 周 | 4 | Agent SDK、OpenClaw 生态、MCP 高级 |
-| [03-实战应用](./03-实战应用/) | 2-3 周 | 3 | 工具探索与综合项目 |
+| [01-基础入门](./01-基础入门/) | 1-1.5 周 | 2 | AI 工具基础与 MCP 协议 |
+| [02-进阶探索](./02-进阶探索/) | 1.5-2 周 | 4 | Agent 配置、AI 编排、资源研究 |
+| [03-实战应用](./03-实战应用/) | 2-3 周 | 3 | 配置管理与综合项目 |
 
 **当前进度**：查看 [PROGRESS.md](./PROGRESS.md) 了解详细进度
 
 ---
 
-## 👥 团队协作
+## 📦 模板使用指南
 
-本仓库支持 **团队协作学习**，通过 Fork + upstream 工作流，每个成员拥有独立的学习数据，同时可以获取系统更新。
+本模板支持 **Fork + upstream 工作流**，你拥有独立的学习数据，同时可以获取模板更新。
 
 > 💡 **什么是 Fork 工作流？**
-> - **Fork** = 复制仓库到你的账号
-> - **upstream** = 官方仓库（你 Fork 的源）
+> - **Fork** = 复制模板到你的账号
+> - **upstream** = 模板仓库（你 Fork 的源）
 > - **origin** = 你的仓库（Fork 后的副本）
 >
-> 详细解释见 [TEAM_GUIDE.md](./TEAM_GUIDE.md#-理解远程仓库origin-vs-upstream)
+> 详细解释见 [TEMPLATE_GUIDE.md](./TEMPLATE_GUIDE.md#-理解远程仓库origin-vs-upstream)
 
-### 快速开始（团队成员）
+### 快速开始
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  步骤 1: Fork 并 Clone                                          │
-│  1. Fork 主仓库到你的 GitHub 账号                               │
+│  1. Fork 本模板到你的 GitHub 账号                               │
 │  2. Clone 你的仓库到本地: git clone <your-fork-url>             │
 │  3. 运行初始化: bash scripts/init.sh                            │
 ├─────────────────────────────────────────────────────────────────┤
 │  步骤 2: 开始学习                                                │
-│  对 Claude 说：→ "开始学习 claude-code-core"                      │
+│  对 Claude 说：→ "开始学习 ai-tools-fundamentals"                │
 ├─────────────────────────────────────────────────────────────────┤
 │  步骤 3: 同步更新（可选）                                        │
 │  运行同步脚本: bash scripts/sync.sh                              │
@@ -104,12 +129,12 @@
 | 特性 | 说明 |
 |------|------|
 | **数据隔离** | 学习进度、笔记、书签完全本地管理，不会同步到 GitHub |
-| **系统更新** | 通过 `scripts/sync.sh` 获取主仓库的最新功能和修复 |
+| **模板更新** | 通过 `scripts/sync.sh` 获取模板仓库的最新功能和修复 |
 | **安全备份** | 支持 `scripts/backup.sh` 备份个人学习数据 |
 
-### 团队文档
+### 相关文档
 
-- [TEAM_GUIDE.md](./TEAM_GUIDE.md) - 完整的团队协作指南
+- [TEMPLATE_GUIDE.md](./TEMPLATE_GUIDE.md) - 完整的模板使用指南
 - [MIGRATION.md](./MIGRATION.md) - 版本迁移指南
 - [CHANGELOG.md](./CHANGELOG.md) - 版本变更历史
 
@@ -125,11 +150,11 @@
 │  对 Claude 说：→ "查看学习状态"                                   │
 ├─────────────────────────────────────────────────────────────────┤
 │  步骤 2: 开始学习                                                │
-│  对 Claude 说：→ "开始学习 claude-code-core"                      │
+│  对 Claude 说：→ "开始学习 ai-tools-fundamentals"                │
 │  选择模式：快速(3天) / 完整(1周)                                  │
 ├─────────────────────────────────────────────────────────────────┤
 │  步骤 3: 更新进度                                                │
-│  对 Claude 说：→ "更新进度 claude-code-core"                      │
+│  对 Claude 说：→ "更新进度 ai-tools-fundamentals"                │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -150,7 +175,7 @@
 | 刷新缓存 | `刷新知识缓存` | 更新所有缓存 |
 | 查看缓存 | `查看知识缓存` | 显示缓存状态 |
 
-> 💡 所有命令都支持自然语言变体，例如"开始学习模块 mcp-basics"、"我的书签"等
+> 💡 所有命令都支持自然语言变体，例如"开始学习模块 mcp-protocol"、"我的书签"等
 
 ### 学习模式速选
 
@@ -166,32 +191,79 @@
 | 指南 | 说明 |
 |------|------|
 | [学习工作流程](./CLAUDE.md) | 完整的学习命令说明（包含书签和缓存系统） |
-| [团队协作指南](./TEAM_GUIDE.md) | Fork + upstream 工作流，团队协作学习 |
+| [模板使用指南](./TEMPLATE_GUIDE.md) | Fork + upstream 工作流，自定义学习计划 |
 | [版本迁移指南](./MIGRATION.md) | 版本升级和数据迁移步骤 |
 | [工具改进指南](./.claude/IMPROVEMENT_GUIDE.md) | 如何改进这个学习工具本身 |
 | [.claude/IDEAS.md](./.claude/IDEAS.md) | 学习工具改进想法记录 |
 
 ---
 
-## 推荐学习路径
+## 如何自定义
 
-### 最小可行路径（MVP）
+### 添加自定义模块
+
+使用 `scripts/create-module.sh` 快速创建新模块：
+
+```bash
+# 用法
+bash scripts/create-module.sh <模块名> <阶段> <优先级>
+
+# 示例：添加一个 React 学习模块
+bash scripts/create-module.sh react-basics 01-基础入门 P1
+```
+
+脚本将自动：
+1. 创建模块目录结构
+2. 生成 README.md、checklist.md、notes.md 模板
+3. 提示你更新 CLAUDE.md 映射
+
+### 配置知识来源
+
+编辑模块的 `README.md`，添加你的学习资源链接：
+
+```markdown
+## 学习资源
+
+### 官方文档
+- [React 官方文档](https://react.dev)
+- [TypeScript 手册](https://www.typescriptlang.org/docs/)
+
+### 推荐教程
+- 你的教程链接...
+```
+
+### 修改学习流程
+
+编辑 `CLAUDE.md` 自定义：
+- 学习命令触发词
+- 进度计算规则
+- 书签系统行为
+
+---
+
+## 内置课程示例
+
+本模板内置了 **AI 工具学习基础课程**作为示例，包含以下模块：
+
+### 推荐学习路径
+
+#### 最小可行路径（MVP）
 仅完成 P0 必学模块：
-- `claude-code-core` [P0]
+- `ai-tools-fundamentals` [P0]
 - **时间**：约 3-4 天
 
-### 核心能力路径
+#### 核心能力路径
 完成 P0 + P1 模块：
-- `claude-code-core` [P0]
-- `mcp-basics` [P1]
-- `openclaw-ecosystem` [P1]
-- `everything-claude-code` [P1]
-- `projects/feishu-learning-assistant` [P1] - 飞书学习助手实战
+- `ai-tools-fundamentals` [P0]
+- `mcp-protocol` [P1]
+- `ai-orchestration` [P1]
+- `ai-resources-research` [P1]
+- `practical-projects` [P1]
 - **时间**：约 3-4 周
 
-### 全栈学习路径
+#### 全栈学习路径
 完成所有 P0/P1/P2/P3 模块：
-- 核心能力路径 + `agent-sdk` [P2] + `cc-switch` [P2] + `spec-kit` [P2] + `mcp-advanced` [P3]
+- 核心能力路径 + `agent-configuration` [P2] + `config-management` [P2] + `spec-driven-dev` [P2] + `mcp-advanced-config` [P3]
 - **时间**：约 5-7 周
 
 ---
@@ -199,11 +271,11 @@
 ## 目录结构
 
 ```
-claude-code-study/
+ai-learning-template/
 ├── README.md                    # 本文件
 ├── PROGRESS.md                  # 学习进度总表（个人数据，.gitignore）
 ├── CLAUDE.md                    # AI 工作流程配置（命令定义）
-├── TEAM_GUIDE.md                # 团队协作指南
+├── TEMPLATE_GUIDE.md            # 模板使用指南
 ├── CHANGELOG.md                 # 版本变更历史
 ├── MIGRATION.md                 # 版本迁移指南
 │
@@ -213,13 +285,15 @@ claude-code-study/
 │   ├── LEARNING_BOOKMARKS.template.md
 │   └── module/                  # 模块模板
 │       ├── checklist.template.md
-│       └── notes.template.md
+│       ├── notes.template.md
+│       └── README.template.md   # 新模块模板
 │
 ├── scripts/                     # 自动化脚本（系统文件）
 │   ├── init.sh                  # 初始化脚本
 │   ├── sync.sh                  # 同步上游更新
 │   ├── migrate.sh               # 版本迁移工具
-│   └── backup.sh                # 数据备份工具
+│   ├── backup.sh                # 数据备份工具
+│   └── create-module.sh         # 创建新模块
 │
 ├── .claude/                     # 系统配置目录
 │   ├── LEARNING_BOOKMARKS.md    # 书签系统（个人数据，.gitignore）
@@ -228,35 +302,21 @@ claude-code-study/
 │
 ├── 01-基础入门/                 # 基础入门阶段
 │   ├── README.md                # 阶段导学
-│   ├── claude-code-core/        # Claude Code 核心概念 [P0🔴]
-│   │   ├── README.md            # 模块导学
-│   │   ├── checklist.md         # 学习清单（个人数据，.gitignore）
-│   │   ├── notes.md             # 学习笔记（个人数据，.gitignore）
-│   │   ├── knowledge/           # 知识缓存目录（个人数据，.gitignore）
-│   │   │   ├── overview.md      # 概述内容
-│   │   │   ├── concepts.md      # 核心概念
-│   │   │   ├── guides.md        # 使用指南
-│   │   │   └── .metadata.json   # 缓存元数据
-│   │   └── exercises/           # 实践练习目录
-│   └── mcp-basics/              # MCP 基础入门 [P1🟡]
-│       ├── README.md
-│       ├── checklist.md
-│       ├── notes.md
-│       ├── knowledge/           # 知识缓存目录
-│       └── exercises/
+│   ├── ai-tools-fundamentals/   # AI 工具基础 [P0🔴]
+│   └── mcp-protocol/            # MCP 协议入门 [P1🟡]
 │
 ├── 02-进阶探索/                 # 进阶探索阶段
 │   ├── README.md
-│   ├── agent-sdk/               # Agent 配置与使用 [P2🟢]
-│   ├── mcp-advanced/            # MCP 高级配置 [P3🔵]
-│   ├── openclaw-ecosystem/      # OpenClaw 生态系统 [P1🟡]
-│   └── everything-claude-code/  # 资源集合研究 [P1🟡]
+│   ├── agent-configuration/     # Agent 配置与使用 [P2🟢]
+│   ├── mcp-advanced-config/     # MCP 高级配置 [P3🔵]
+│   ├── ai-orchestration/        # AI 编排平台 [P1🟡]
+│   └── ai-resources-research/   # AI 资源研究 [P1🟡]
 │
 ├── 03-实战应用/                 # 实战应用阶段
 │   ├── README.md
-│   ├── cc-switch/               # 配置管理工具 [P2🟢]
-│   ├── spec-kit/                # 规范驱动开发 [P2🟢]
-│   └── projects/                # 综合实战项目 [P1🟡]
+│   ├── config-management/       # 配置管理工具 [P2🟢]
+│   ├── spec-driven-dev/         # 规范驱动开发 [P2🟢]
+│   └── practical-projects/      # 综合实战项目 [P1🟡]
 │
 ├── .backups/                    # 备份目录（.gitignore）
 │
@@ -286,25 +346,25 @@ claude-code-study/
 
 ### 🤖 AI 工作流程命令
 
-本学习计划支持 **自然语言** 触发的进度管理命令：
+本学习模板支持 **自然语言** 触发的进度管理命令：
 
 | 命令 | 示例 | 说明 |
 |------|------|------|
 | **学习管理** | | |
-| 开始学习 | "开始学习 mcp-basics" | 启动模块学习，选择模式 |
-| 更新进度 | "更新进度 claude-code-core" | 根据清单自动计算进度 |
-| 完成学习 | "完成学习 claude-code-core" | 标记模块为已完成 |
+| 开始学习 | "开始学习 mcp-protocol" | 启动模块学习，选择模式 |
+| 更新进度 | "更新进度 ai-tools-fundamentals" | 根据清单自动计算进度 |
+| 完成学习 | "完成学习 ai-tools-fundamentals" | 标记模块为已完成 |
 | 查看状态 | "查看学习状态" | 显示所有模块进度概览 |
 | **书签系统** | | |
 | 创建书签 | "创建书签 深入理解钩子" | 记录疑问点，自动获取上下文 |
 | 继续书签 | "继续书签" 或 "我的书签" | 查看书签列表，选择继续 |
 | 完成书签 | "完成书签 钩子系统" | 完成探索，返回主线学习 |
 | **知识缓存** | | |
-| 初始化缓存 | "初始化知识缓存 mcp-basics" | 首次拉取官方资料到本地 |
+| 初始化缓存 | "初始化知识缓存 mcp-protocol" | 首次拉取官方资料到本地 |
 | 刷新缓存 | "刷新知识缓存" | 更新所有模块的缓存 |
 | 查看缓存 | "查看知识缓存" | 显示缓存状态和日期 |
 
-> 💡 所有命令都支持自然语言变体，例如"开始模块 mcp-basics"、"我的书签有哪些"等
+> 💡 所有命令都支持自然语言变体，例如"开始模块 mcp-protocol"、"我的书签有哪些"等
 
 ### 开始学习
 1. 阅读本 README 了解整体规划
@@ -361,11 +421,12 @@ claude-code-study/
 | 2026-02-26 | - | 初始化学习计划 | 创建目录结构和进度追踪系统 |
 | 2026-02-27 | - | 学习系统改进 | 实施书签系统和知识缓存系统 |
 | 2026-02-27 | - | 团队协作系统 | 实施 Fork + upstream 工作流和模板系统 |
-| 2026-03-01 | claude-code-core | 模块完成 | 🎉 claude-code-core 模块 100% 完成！ |
+| 2026-03-01 | ai-tools-fundamentals | 模块完成 | 🎉 ai-tools-fundamentals 模块 100% 完成！ |
 | 2026-03-01 | - | 文件完整性检查 | 核对 CLAUDE.md 和项目文件完整性 |
 | 2026-03-03 | - | 版本 1.3.0 | 学习计划同步功能 |
-| 2026-03-03 | projects | feishu-learning-assistant | 飞书学习助手实战项目 |
+| 2026-03-03 | practical-projects | feishu-learning-assistant | 飞书学习助手实战项目 |
+| 2026-03-05 | - | 版本 2.0.0 | 项目重新定位为"AI 技术学习模板" |
 
 ---
 
-*创建于 2026-02-26 | 最后更新 2026-03-03*
+*创建于 2026-02-26 | 最后更新 2026-03-05*

@@ -1,8 +1,8 @@
 #!/bin/bash
 # =============================================================================
-# Claude Code 学习计划 - 初始化脚本
+# AI 技术学习模板 - 初始化脚本
 # =============================================================================
-# 用途：新成员初始化个人学习数据
+# 用途：新用户初始化个人学习数据
 # 用法：bash scripts/init.sh [--force]
 # =============================================================================
 
@@ -132,7 +132,7 @@ init_module_files() {
     print_info "初始化模块文件..."
 
     # 查找所有模块目录
-    local module_dirs=$(find . -type d -name "claude-code-core" -o -name "mcp-basics" -o -name "agent-sdk" -o -name "mcp-advanced" -o -name "everything-claude-code" -o -name "cc-switch" -o -name "spec-kit" -o -name "projects" 2>/dev/null)
+    local module_dirs=$(find . -type d \( -name "ai-tools-fundamentals" -o -name "mcp-protocol" -o -name "agent-configuration" -o -name "mcp-advanced-config" -o -name "ai-orchestration" -o -name "ai-resources-research" -o -name "config-management" -o -name "spec-driven-dev" -o -name "practical-projects" \) 2>/dev/null)
 
     for module_dir in $module_dirs; do
         # 跳过模板目录
@@ -248,7 +248,7 @@ main() {
         esac
     done
 
-    print_header "      Claude Code 学习计划 - 初始化向导      "
+    print_header "      AI 技术学习模板 - 初始化向导      "
 
     # 检查是否已初始化
     if check_initialized && [ "$force" = false ]; then
@@ -298,12 +298,28 @@ main() {
     echo ""
     print_info "下一步："
     echo "  1. 对 Claude 说：'查看学习状态'"
-    echo "  2. 对 Claude 说：'开始学习 claude-code-core'"
+    echo "  2. 对 Claude 说：'开始学习 ai-tools-fundamentals'"
     echo "  3. 选择学习模式（快速/完整）"
     echo ""
     print_info "更多信息请查看："
     echo "  - README.md（快速开始指南）"
-    echo "  - TEAM_GUIDE.md（团队协作指南）"
+    echo "  - TEMPLATE_GUIDE.md（模板使用指南）"
+    echo ""
+
+    # 迁移提示（针对 v1.x 用户）
+    echo ""
+    print_warning "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    print_warning "  如果你是从 v1.x 版本升级的用户"
+    print_warning "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    print_warning ""
+    print_warning "  检测到你可能在使用旧的模块名称。"
+    print_warning "  建议运行迁移脚本更新模块名称："
+    print_warning ""
+    print_warning "    bash scripts/migrate-v2.sh --dry-run  # 预览"
+    print_warning "    bash scripts/migrate-v2.sh --backup  # 执行迁移"
+    print_warning ""
+    print_warning "  迁移后旧名称仍可使用（通过别名映射）"
+    print_warning "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo ""
 }
 

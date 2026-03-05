@@ -1,6 +1,6 @@
 # 学习进度总览
 
-> 本文件用于追踪整个 Claude Code 学习计划的整体进度。
+> 本文件用于追踪整个 AI 技术学习计划的整体进度。
 
 ---
 
@@ -19,36 +19,37 @@
 
 ## 01-基础入门 [0%]
 
-**预计时长**：2-3 周（完整模式）| **难度等级**：⭐ 入门
+**预计时长**：1-1.5 周（完整模式）| **难度等级**：⭐ 入门
 
 | 模块 | 优先级 | 学习模式 | 状态 | 完成度 |
 |------|--------|----------|------|--------|
-| claude-code-core | P0 🔴 | 未选择 | 未开始 | 0% |
-| mcp-basics | P1 🟡 | 未选择 | 未开始 | 0% |
+| ai-tools-fundamentals | P0 🔴 | 未选择 | 未开始 | 0% |
+| mcp-protocol | P1 🟡 | 未选择 | 未开始 | 0% |
 
 ---
 
 ## 02-进阶探索 [0%]
 
-**预计时长**：3-4 周（完整模式）| **难度等级**：⭐⭐⭐ 进阶
+**预计时长**：1.5-2 周（完整模式）| **难度等级**：⭐⭐⭐ 进阶
 
 | 模块 | 优先级 | 学习模式 | 状态 | 完成度 |
 |------|--------|----------|------|--------|
-| agent-sdk | P1 🟡 | 未选择 | 未开始 | 0% |
-| mcp-advanced | P2 🟢 | 未选择 | 未开始 | 0% |
-| everything-claude-code | P3 🔵 | 未选择 | 未开始 | 0% |
+| agent-configuration | P2 🟢 | 未选择 | 未开始 | 0% |
+| mcp-advanced-config | P3 🔵 | 未选择 | 未开始 | 0% |
+| ai-orchestration | P1 🟡 | 未选择 | 未开始 | 0% |
+| ai-resources-research | P1 🟡 | 未选择 | 未开始 | 0% |
 
 ---
 
 ## 03-实战应用 [0%]
 
-**预计时长**：4-6 周（完整模式）| **难度等级**：⭐⭐⭐⭐⭐ 高级
+**预计时长**：2-3 周（完整模式）| **难度等级**：⭐⭐⭐⭐⭐ 高级
 
 | 模块 | 优先级 | 学习模式 | 状态 | 完成度 |
 |------|--------|----------|------|--------|
-| cc-switch | P2 🟢 | 未选择 | 未开始 | 0% |
-| spec-kit | P2 🟢 | 未选择 | 未开始 | 0% |
-| projects | P1 🟡 | 未选择 | 未开始 | 0% |
+| config-management | P2 🟢 | 未选择 | 未开始 | 0% |
+| spec-driven-dev | P2 🟢 | 未选择 | 未开始 | 0% |
+| practical-projects | P1 🟡 | 未选择 | 未开始 | 0% |
 
 ---
 
@@ -85,18 +86,19 @@
 
 ### 最小可行路径（MVP）
 仅完成 P0 必学模块：
-- claude-code-core [P0]
+- ai-tools-fundamentals [P0]
 - **时间**：约 1 周
 
 ### 核心能力路径
 完成 P0 + P1 模块：
-- claude-code-core [P0]
-- mcp-basics [P1]
-- agent-sdk [P1]
-- projects [P1]
-- **时间**：约 6-8 周
+- ai-tools-fundamentals [P0]
+- mcp-protocol [P1]
+- ai-orchestration [P1]
+- ai-resources-research [P1]
+- practical-projects [P1]
+- **时间**：约 4-6 周
 
 ### 全栈学习路径
-完成所有 P0/P1/P2 模块：
-- 上述 + mcp-advanced [P2] + cc-switch [P2] + spec-kit [P2]
-- **时间**：约 10-14 周
+完成所有 P0/P1/P2/P3 模块：
+- 上述 + agent-configuration [P2] + config-management [P2] + spec-driven-dev [P2] + mcp-advanced-config [P3]
+- **时间**：约 8-12 周

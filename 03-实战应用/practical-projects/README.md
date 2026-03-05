@@ -1,10 +1,10 @@
-# projects 综合实战项目
+# practical-projects 综合实战项目
 
 > **优先级**：P1 🟡 推荐
 > **预计时长**：完整模式 2-4 周
 > **难度等级**：⭐⭐⭐⭐⭐ 高级
-> **前置要求**：完成 P0/P1 模块学习
-> **更新日期**：2026-02-26
+> **前置要求**：完成 ai-tools-fundamentals [P0]、mcp-protocol [P1]
+> **更新日期**：2026-03-05
 
 ---
 
@@ -16,8 +16,8 @@
 
 ## 前置知识
 
-- [ ] 完成 claude-code-core [P0]
-- [ ] 完成 mcp-basics [P1]
+- [ ] 完成 ai-tools-fundamentals [P0]
+- [ ] 完成 mcp-protocol [P1]
 - [ ] 完成 openclaw-ecosystem [P1]（推荐）
 - [ ] 具备项目经验或明确的 project 想法
 

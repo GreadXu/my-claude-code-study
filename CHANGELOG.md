@@ -1,6 +1,6 @@
 # 变更日志
 
-本文件记录 Claude Code 学习计划的所有重要变更。
+本文件记录 AI 技术学习模板的所有重要变更。
 
 格式遵循 [语义化版本](https://semver.org/lang/zh-CN/) 规范。
 
@@ -19,8 +19,95 @@
 ## [Unreleased]
 
 ### 计划中
-- 添加更多实战项目模块
+- 添加更多学习模块模板
 - 改进进度可视化
+- 支持自定义学习路径
+
+---
+
+## [2.0.1] - 2026-03-05
+
+（兼容性更新）
+
+### 向后兼容性 (Backward Compatibility)
+- ✨ **模块名称别名映射**：支持旧模块名称继续使用
+  - 在 CLAUDE.md 中添加了别名映射表
+  - AI 行为时显示提示："注意：'{旧名称}' 已更名为 '{新名称}'，正在使用新名称继续..."
+  - 旧名称完全兼容，无需强制迁移
+
+### Clone 模式支持
+- ✨ **两种使用模式**：
+  - **Fork 模式**：公开仓库，通过 upstream 自动更新
+  - **Clone 模式**：私有仓库，通过 `scripts/update-standalone.sh` 更新
+- 📝 **TEMPLATE_GUIDE.md 更新**：添加模式选择指南
+
+### 新增 (Added)
+- 🛠️ **新增脚本**：
+  - `scripts/migrate-v2.sh`：v1.x → v2.0 迁移脚本
+  - `scripts/update-standalone.sh`：Clone 模式独立更新脚本
+- 🔧 **update-checker.ts 改进**：
+  - 新增 `isCloneMode()` 函数
+  - 新增 `getRemoteVersionForCloneMode()` 函数
+  - 支持 Clone 模式版本检测
+
+### 文档 (Documentation)
+- 📖 **CLAUDE.md 更新**：
+  - 添加模块名称别名映射章节
+- 📖 **TEMPLATE_GUIDE.md 更新**：
+  - 添加两种使用模式说明
+  - 添加 Clone 模式更新步骤
+
+---
+
+## [2.0.0] - 2026-03-05
+
+### 重大变更 (Breaking Changes)
+- 🔄 **项目重新定位**：从"Claude Code 学习计划"→"AI 技术学习模板"
+  - 现在是一个可复用的学习框架，支持 Fork 后自定义学习内容
+  - 内置 AI 工具基础课程作为示例
+
+### 新增 (Added)
+- ✨ **模块重命名**：所有模块使用通用名称，适合任何技术学习
+  - `claude-code-core` → `ai-tools-fundamentals`
+  - `mcp-basics` → `mcp-protocol`
+  - `agent-sdk` → `agent-configuration`
+  - `mcp-advanced` → `mcp-advanced-config`
+  - `openclaw-ecosystem` → `ai-orchestration`
+  - `everything-claude-code` → `ai-resources-research`
+  - `cc-switch` → `config-management`
+  - `spec-kit` → `spec-driven-dev`
+  - `projects` → `practical-projects`
+- 🛠️ **新增脚本**：`scripts/create-module.sh` 快速创建新模块
+- 📝 **新增模板**：`.templates/module/README.template.md` 模块 README 模板
+
+### 向后兼容性 (新增)
+- ✨ **模块名称别名映射**：支持旧模块名称（如 `claude-code-core`）继续使用
+  - 在 CLAUDE.md 中添加了别名映射表
+  - AI 行为时显示提示："注意：'{旧名称}' 已更名为 '{新名称}'，正在使用新名称继续..."
+- 📜 **迁移脚本**：新增 `scripts/migrate-v2.sh` 帮 v1.x 用户平滑迁移
+  - 迁移 PROGRESS.md、 checklist.md、 notes.md 等文件
+  - 显示迁移提示，建议运行迁移脚本
+- 🔧 **Clone 模式支持**：
+  - 新增 `scripts/update-standalone.sh` 脚本
+  - 支持 Clone 模式（私有仓库）用户更新模板
+  - 通过 HTTPS 获取最新版本，  智能合并更新（保留个人数据）
+- 🔄 **update-checker.ts 改进**：支持 Clone 模式检测
+  - 新增 `isCloneMode()` 函数
+  - 新增 `getRemoteVersionForCloneMode()` 函数
+  - 修改 `checkForUpdates()` 支持 Clone 模式
+  - 修改 `formatUpdateReminder()` 和 `formatSyncCheckResult()` 支持 Clone 模式提示
+
+- 📖 **TEMPLATE_GUIDE.md 更新**：添加两种使用模式说明和 Clone 模式更新步骤
+
+### 文档 (Documentation)
+- 📖 **README.md 重写**：更新为模板使用说明
+- 📖 **CLAUDE.md 更新**：更新项目概述和模块映射
+- 📖 **TEAM_GUIDE.md → TEMPLATE_GUIDE.md**：重命名并更新为模板使用指南
+
+### 变更 (Changed)
+- 🔄 阶段 README.md 更新:反映新的模块名称
+- 🔄 模块 README.md 更新:更新标题和前置要求
+- 🔄 `scripts/init.sh` 更新:更新模块列表
 
 ---
 
@@ -203,7 +290,8 @@
 
 | 版本 | 日期 | 主要变更 |
 |------|------|----------|
-| 1.3.1 | 2026-03-04 | 测试版本：同步功能验证 |
+| 2.0.0 | 2026-03-05 | 项目重新定位为"AI 技术学习模板" |
+| 1.3.3 | 2026-03-04 | 测试版本：同步功能验证 |
 | 1.3.0 | 2026-03-03 | 学习计划同步功能：版本检查和自动同步 |
 | 1.2.0 | 2026-03-01 | 理论知识展示规范 + 飞书学习助手项目 |
 | 1.1.2 | 2026-02-28 | 书签系统改进：添加探索行为规范和状态提示 |
@@ -213,4 +301,4 @@
 ---
 
 **创建日期**：2026-02-27
-**当前版本**：1.3.1
+**当前版本**：2.0.0

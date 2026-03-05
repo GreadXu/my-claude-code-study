@@ -1,10 +1,10 @@
-# openclaw-ecosystem OpenClaw 生态系统
+# ai-orchestration AI 编排平台
 
 > **优先级**：P1 🟡 推荐
 > **预计时长**：快速模式 4-5 天 | 完整模式 1 周
 > **难度等级**：⭐⭐⭐ 进阶
-> **前置要求**：Docker 基础、claude-code-core
-> **更新日期**：2026-02-28
+> **前置要求**：Docker 基础、ai-tools-fundamentals
+> **更新日期**：2026-03-05
 
 ---
 

@@ -88,6 +88,35 @@ function isUpstreamConfigured(rootDir: string): boolean {
 }
 
 /**
+ * 检测是否为 Clone 模式（无 upstream）
+ */
+export function isCloneMode(rootDir: string): boolean {
+  return !isUpstreamConfigured(rootDir);
+}
+
+/**
+ * 获取 Clone 模式的远程版本（通过 HTTPS 获取 CHANGELOG.md）
+ */
+function getRemoteVersionForCloneMode(): string {
+  const TEMPLATE_REPO = 'https://raw.githubusercontent.com/GreadXu/claude-code-study/main/CHANGELOG.md';
+
+  try {
+    const response = execSync(`curl -s --max-time 5 ${TEMPLATE_REPO}`, {
+      encoding: 'utf-8',
+      timeout: 10000, // 10秒超时
+      stdio: ['pipe', 'pipe', 'pipe']
+    });
+
+    if (response) {
+      return extractVersion(response);
+    }
+    return 'unknown';
+  } catch {
+    return 'unknown';
+  }
+}
+
+/**
  * 比较两个版本号
  * 返回: 1 (v1 > v2), -1 (v1 < v2), 0 (v1 === v2)
  */
@@ -109,24 +138,41 @@ function compareVersions(v1: string, v2: string): number {
 
 /**
  * 检查是否有上游更新
+ * 支持 Fork 模式和 Clone 模式
  *
  * @param rootDir - 仓库根目录
  * @returns 更新检查结果
  */
 export function checkForUpdates(rootDir: string): UpdateCheckResult {
   const upstreamConfigured = isUpstreamConfigured(rootDir);
+  const currentVersion = getCurrentVersion(rootDir);
 
+  // Clone 模式：通过 HTTPS 获取远程版本
   if (!upstreamConfigured) {
+    const remoteVersion = getRemoteVersionForCloneMode();
+
+    if (remoteVersion === 'unknown') {
+      return {
+        hasUpdates: false,
+        currentVersion,
+        upstreamVersion: 'unknown',
+        upstreamConfigured: false,
+        error: '无法获取模板版本（请检查网络连接）'
+      };
+    }
+
+    const hasUpdates = compareVersions(remoteVersion, currentVersion) > 0;
+
     return {
-      hasUpdates: false,
-      currentVersion: getCurrentVersion(rootDir),
-      upstreamVersion: 'unknown',
+      hasUpdates,
+      currentVersion,
+      upstreamVersion: remoteVersion,
       upstreamConfigured: false,
-      error: 'upstream 未配置'
+      error: hasUpdates ? undefined : 'Clone 模式 - 建议使用 scripts/update-standalone.sh 更新'
     };
   }
 
-  const currentVersion = getCurrentVersion(rootDir);
+  // Fork 模式：通过 git upstream 获取版本
   const upstreamVersion = getUpstreamVersion(rootDir);
 
   if (upstreamVersion === 'unknown') {
@@ -163,14 +209,19 @@ export function formatUpdateReminder(result: UpdateCheckResult): string {
   lines.push('╠═══════════════════════════════════════════════════════════════════╣');
 
   if (!result.upstreamConfigured) {
-    lines.push('║ upstream 远程仓库未配置                                        ║');
-    lines.push('╠═══════════════════════════════════════════════════════════════════╣');
-    lines.push('║ 当前版本: ' + result.currentVersion.padEnd(52) + '║');
-    lines.push('╠═══════════════════════════════════════════════════════════════════╣');
-    lines.push('║ 配置指引:                                                      ║');
-    lines.push('║   git remote add upstream <原始仓库URL>                        ║');
-    lines.push('╠═══════════════════════════════════════════════════════════════════╣');
-    lines.push('║ 配置后可使用: /study sync 检查更新                             ║');
+    // Clone 模式
+    if (result.hasUpdates) {
+      lines.push('║ 当前模式: Clone 模式（私有仓库）                              ║');
+      lines.push('╠═══════════════════════════════════════════════════════════════════╣');
+      lines.push('║ 当前版本: ' + result.currentVersion.padEnd(52) + '║');
+      lines.push('║ 最新版本: ' + result.upstreamVersion.padEnd(52) + '║');
+      lines.push('╠═══════════════════════════════════════════════════════════════════╣');
+      lines.push('║ 更新命令: bash scripts/update-standalone.sh                           ║');
+    } else {
+      lines.push('║ Clone 模式 - 请检查网络连接                                  ║');
+      lines.push('╠═══════════════════════════════════════════════════════════════════╣');
+      lines.push('║ 当前版本: ' + result.currentVersion.padEnd(52) + '║');
+    }
   } else if (result.error) {
     lines.push('║ 当前版本: ' + result.currentVersion.padEnd(52) + '║');
     lines.push('║ 上游版本: ' + result.upstreamVersion.padEnd(52) + '║');
@@ -203,19 +254,37 @@ export function formatSyncCheckResult(result: UpdateCheckResult): string {
   lines.push('╚════════════════════════════════════════════════════════╝');
   lines.push('');
 
+  // Clone 模式
   if (!result.upstreamConfigured) {
-    lines.push('❌ upstream 远程仓库未配置');
-    lines.push('');
-    lines.push('请先配置 upstream 远程仓库：');
-    lines.push('');
-    lines.push('  git remote add upstream <原始仓库URL>');
-    lines.push('');
-    lines.push('例如：');
-    lines.push('  git remote add upstream https://github.com/username/claude-code-study.git');
-    lines.push('');
+    if (result.hasUpdates) {
+      lines.push('📦 检测到 Clone 模式（私有仓库）');
+      lines.push('');
+      lines.push(`当前版本: ${result.currentVersion}`);
+      lines.push(`最新版本: ${result.upstreamVersion}`);
+      lines.push('');
+      lines.push('✨ 发现模板更新！');
+      lines.push('');
+      lines.push('如需更新，请使用：');
+      lines.push('  bash scripts/update-standalone.sh');
+      lines.push('');
+    } else if (result.error && !result.error.includes('建议使用')) {
+      lines.push('📦 检测到 Clone 模式（私有仓库）');
+      lines.push('');
+      lines.push(`当前版本: ${result.currentVersion}`);
+      lines.push('✅ 已是最新版本');
+      lines.push('');
+    } else {
+      lines.push('📦 检测到 Clone 模式（私有仓库）');
+      lines.push('');
+      lines.push(`❌ ${result.error}`);
+      lines.push('');
+      lines.push('请检查网络连接后重试');
+      lines.push('');
+    }
     return lines.join('\n');
   }
 
+  // Fork 模式
   lines.push(`当前版本: ${result.currentVersion}`);
   lines.push(`上游版本: ${result.upstreamVersion}`);
   lines.push('');

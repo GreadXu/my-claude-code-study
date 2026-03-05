@@ -2,20 +2,20 @@
 
 > **预计时长**：1-1.5 周（完整模式）
 > **难度等级**：⭐ 入门
-> **更新日期**：2026-02-26
+> **更新日期**：2026-03-05
 
 ---
 
 ## 阶段概述
 
-本阶段聚焦 Claude Code 生态的核心基础知识，为后续深入学习打下坚实基础。通过本阶段学习，你将掌握**配置和使用 AI 能力**的核心方法，包括 Claude Code 的配置系统和 MCP 协议的基础应用。
+本阶段聚焦 AI 工具的核心基础知识，为后续深入学习打下坚实基础。通过本阶段学习，你将掌握**配置和使用 AI 能力**的核心方法，包括 AI 工具基础和 MCP 协议的基础应用。
 
 ## 学习模块
 
 | 模块 | 优先级 | 学习模式 | 状态 |
 |------|--------|----------|------|
-| [claude-code-core](./claude-code-core/) | P0 🔴 必学 | - | 未开始 |
-| [mcp-basics](./mcp-basics/) | P1 🟡 推荐 | - | 未开始 |
+| [ai-tools-fundamentals](./ai-tools-fundamentals/) | P0 🔴 必学 | - | 未开始 |
+| [mcp-protocol](./mcp-protocol/) | P1 🟡 推荐 | - | 未开始 |
 
 ---
 
@@ -31,13 +31,13 @@
 ## 时间规划
 
 ### 快速模式（仅理论）
-- claude-code-core：约 1-2 天
-- mcp-basics：约 1 天
+- ai-tools-fundamentals：约 1-2 天
+- mcp-protocol：约 1 天
 - **合计**：约 2-3 天
 
 ### 完整模式（理论+实践）
-- claude-code-core：约 3-4 天
-- mcp-basics：约 2-3 天
+- ai-tools-fundamentals：约 3-4 天
+- mcp-protocol：约 2-3 天
 - **合计**：约 1-1.5 周
 
 ---
@@ -46,13 +46,13 @@
 
 完成本阶段后，你将能够：
 
-### claude-code-core [P0]
-- [ ] 理解 Claude Code 的核心架构和工作原理
+### ai-tools-fundamentals [P0]
+- [ ] 理解 AI 工具的核心架构和工作原理
 - [ ] 熟练使用至少 10 个核心命令
 - [ ] 掌握权限系统和安全最佳实践
 - [ ] 完成基础配置和环境搭建
 
-### mcp-basics [P1]
+### mcp-protocol [P1]
 - [ ] 理解 MCP 协议的基本概念和工作原理
 - [ ] 成功配置至少 2 个 MCP 服务器
 - [ ] 能够使用 MCP 工具完成简单任务
@@ -79,8 +79,8 @@
 - [MCP GitHub](https://github.com/modelcontextprotocol)
 
 ### 推荐阅读顺序
-1. 先完成 claude-code-core，建立 Claude Code 基础认知
-2. 再学习 mcp-basics，理解扩展协议
+1. 先完成 ai-tools-fundamentals，建立 AI 工具基础认知
+2. 再学习 mcp-protocol，理解扩展协议
 3. 回顾整体架构，形成知识体系
 
 ---
@@ -94,10 +94,10 @@
 ## 常见问题
 
 ### Q: 必须按顺序学习吗？
-**A**: 建议按顺序学习，因为 mcp-basics 需要 claude-code-core 作为基础。
+**A**: 建议按顺序学习，因为 mcp-protocol 需要 ai-tools-fundamentals 作为基础。
 
 ### Q: 快速模式够用吗？
-**A**: 如果你的目标是快速了解 Claude Code 生态，快速模式足够。但若要深入应用，建议选择完整模式。
+**A**: 如果你的目标是快速了解 AI 工具生态，快速模式足够。但若要深入应用，建议选择完整模式。
 
 ### Q: 遇到问题怎么办？
 **A**: 可以查阅各模块目录下的 `notes.md` 学习笔记，或访问官方文档获取帮助。

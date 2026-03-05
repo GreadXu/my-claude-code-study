@@ -1,13 +1,13 @@
-# Claude Code 学习计划 - AI 工作流程指南
+# AI 技术学习模板 - AI 工作流程指南
 
 ## 项目概述
 
-这是一个 **Claude Code 学习计划**项目，用于系统化学习 Claude Code 的使用方法、MCP 协议和 Agent 开发。
+这是一个 **AI 技术学习模板**，一个可复用的 AI 驱动学习框架。Fork 后即可自定义学习内容，适合系统化学习任何技术领域。
 
 ### 学习目标
-- 掌握 Claude Code 的核心功能和配置
+- 掌握 AI 工具的核心功能和配置
 - 学习 MCP (Model Context Protocol) 协议
-- 了解 Agent SDK 开发
+- 了解 AI 编排和 Agent 配置
 - 积累实战项目经验
 
 ### 预计学习时长
@@ -20,24 +20,24 @@
 ## 项目结构
 
 ```
-claude-code-study/
-├── 01-基础入门/              # P0/P1 必学模块
-│   ├── claude-code-core/    # P0 核心功能
-│   └── mcp-basics/          # P1 MCP 基础
-├── 02-进阶探索/              # P1/P2 进阶模块
-│   ├── agent-sdk/           # P2 Agent 开发
-│   ├── mcp-advanced/        # P3 MCP 进阶
-│   ├── openclaw-ecosystem/  # P1 OpenClaw 生态
-│   └── everything-claude-code/ # P1 综合学习
-├── 03-实战应用/              # P1/P2 实战模块
-│   ├── cc-switch/           # P2 实战项目
-│   ├── spec-kit/            # P2 规范工具包
-│   └── projects/            # P1 综合项目
-├── PROGRESS.md               # 总体进度追踪
-├── LEARNING_BOOKMARKS.md     # 学习书签系统
-├── KNOWLEDGE_CACHE.md        # 知识缓存状态
-├── CLAUDE.md                 # 本文件 - AI 工作流程配置
-└── README.md                 # 项目说明文档
+ai-learning-template/
+├── 01-基础入门/                 # P0/P1 必学模块
+│   ├── ai-tools-fundamentals/   # P0 AI 工具基础
+│   └── mcp-protocol/            # P1 MCP 协议入门
+├── 02-进阶探索/                 # P1/P2 进阶模块
+│   ├── agent-configuration/     # P2 Agent 配置与使用
+│   ├── mcp-advanced-config/     # P3 MCP 高级配置
+│   ├── ai-orchestration/        # P1 AI 编排平台
+│   └── ai-resources-research/   # P1 AI 资源研究
+├── 03-实战应用/                 # P1/P2 实战模块
+│   ├── config-management/       # P2 配置管理工具
+│   ├── spec-driven-dev/         # P2 规范驱动开发
+│   └── practical-projects/      # P1 综合实战项目
+├── PROGRESS.md                  # 总体进度追踪
+├── LEARNING_BOOKMARKS.md        # 学习书签系统
+├── KNOWLEDGE_CACHE.md           # 知识缓存状态
+├── CLAUDE.md                    # 本文件 - AI 工作流程配置
+└── README.md                    # 项目说明文档
 ```
 
 ### 模块组织说明
@@ -110,16 +110,35 @@ claude-code-study/
        - 1. 初始化缓存（推荐，首次拉取）
        - 2. 跳过缓存（直接开始学习）
 
+0.5 **模块名称别名解析**（向后兼容）：
+   如果用户输入的模块名不在映射表中，检查别名映射：
+
+   | 旧名称 | 新名称 | 说明 |
+   |--------|--------|------|
+   | `claude-code-core` | `ai-tools-fundamentals` | AI 工具基础 |
+   | `mcp-basics` | `mcp-protocol` | MCP 协议入门 |
+   | `agent-sdk` | `agent-configuration` | Agent 配置与使用 |
+   | `mcp-advanced` | `mcp-advanced-config` | MCP 高级配置 |
+   | `openclaw-ecosystem` | `ai-orchestration` | AI 编排平台 |
+   | `everything-claude-code` | `ai-resources-research` | AI 资源研究 |
+   | `cc-switch` | `config-management` | 配置管理工具 |
+   | `spec-kit` | `spec-driven-dev` | 规范驱动开发 |
+   | `projects` | `practical-projects` | 综合实战项目 |
+
+   如果找到别名：
+   - 显示提示：`"注意：'{旧名称}' 已更名为 '{新名称}'，正在使用新名称继续..."`
+   - 使用新名称继续后续流程
+
 1. 查找模块路径（从以下映射）：
-   - `claude-code-core` → `01-基础入门/claude-code-core`
-   - `mcp-basics` → `01-基础入门/mcp-basics`
-   - `agent-sdk` → `02-进阶探索/agent-sdk`
-   - `mcp-advanced` → `02-进阶探索/mcp-advanced`
-   - `openclaw-ecosystem` → `02-进阶探索/openclaw-ecosystem`
-   - `everything-claude-code` → `02-进阶探索/everything-claude-code`
-   - `cc-switch` → `03-实战应用/cc-switch`
-   - `spec-kit` → `03-实战应用/spec-kit`
-   - `projects` → `03-实战应用/projects`
+   - `ai-tools-fundamentals` → `01-基础入门/ai-tools-fundamentals`
+   - `mcp-protocol` → `01-基础入门/mcp-protocol`
+   - `agent-configuration` → `02-进阶探索/agent-configuration`
+   - `mcp-advanced-config` → `02-进阶探索/mcp-advanced-config`
+   - `ai-orchestration` → `02-进阶探索/ai-orchestration`
+   - `ai-resources-research` → `02-进阶探索/ai-resources-research`
+   - `config-management` → `03-实战应用/config-management`
+   - `spec-driven-dev` → `03-实战应用/spec-driven-dev`
+   - `practical-projects` → `03-实战应用/practical-projects`
 
 2. 验证模块是否已开始学习（检查 checklist.md 的学习模式选择）
    - 如果已开始，显示警告信息
@@ -376,7 +395,7 @@ claude-code-study/
 3. 显示进度概览：
    ```
    ╔═══════════════════════════════════════════════════════╗
-   ║              Claude Code 学习进度总览                ║
+   ║              AI 技术学习进度总览                       ║
    ╠═══════════════════════════════════════════════════════╣
    ║ 总体进度: 15% ████████░░░░░░░░░░░░░░░░░░░░░░░ ║
    ╠═══════════════════════════════════════════════════════╣
@@ -386,8 +405,8 @@ claude-code-study/
    ║   ...
    ╠═══════════════════════════════════════════════════════╣
    ║ 模块状态:                                             ║
-   ║   🟡 claude-code-core    快速模式   25% █████░░░░░░ ║
-   ║   🟢 mcp-basics           未选择    0%  ░░░░░░░░░░░ ║
+   ║   🟡 ai-tools-fundamentals  快速模式  25% █████░░░░░░ ║
+   ║   🟢 mcp-protocol           未选择    0%  ░░░░░░░░░░░ ║
    ║   ...
    ╚═══════════════════════════════════════════════════════╝
    ```
@@ -399,14 +418,14 @@ claude-code-study/
 2. 显示模块详细卡片：
    ```
    ╔═══════════════════════════════════════════════════════╗
-   ║           claude-code-core - 模块详情                 ║
+   ║           ai-tools-fundamentals - 模块详情            ║
    ╠═══════════════════════════════════════════════════════╣
    ║ 优先级: P0 🔴 必学                                    ║
    ║ 学习模式: 📚 快速模式                                 ║
    ║ 状态: 🟡 进行中                                       ║
    ║ 进度: 25% █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░ ║
    ╠═══════════════════════════════════════════════════════╣
-   ║ 路径: 01-基础入门/claude-code-core                     ║
+   ║ 路径: 01-基础入门/ai-tools-fundamentals               ║
    ╚═══════════════════════════════════════════════════════╝
    ```
 
@@ -444,13 +463,13 @@ claude-code-study/
 ```markdown
 # 修改模块行
 # 从：
-| claude-code-core | P0 🔴 | 未选择 | 未开始 | 0% |
+| ai-tools-fundamentals | P0 🔴 | 未选择 | 未开始 | 0% |
 
 # 改为（开始快速模式）：
-| claude-code-core | P0 🔴 | 快速模式 | 进行中 | 0% |
+| ai-tools-fundamentals | P0 🔴 | 快速模式 | 进行中 | 0% |
 
 # 添加学习日志
-| 2026-02-26 | claude-code-core | 开始学习 | 选择快速模式 |
+| 2026-02-26 | ai-tools-fundamentals | 开始学习 | 选择快速模式 |
 ```
 
 ---
@@ -473,7 +492,7 @@ claude-code-study/
 ### 模块状态卡片
 ```
 ┌────────────────────────────────────┐
-│ claude-code-core [P0🔴 必学]      │
+│ ai-tools-fundamentals [P0🔴 必学] │
 ├────────────────────────────────────┤
 │ 模式: 📚 快速模式                  │
 │ 状态: 🟡 进行中                    │
@@ -522,7 +541,7 @@ claude-code-study/
    ║                    书签预览                           ║
    ╠═══════════════════════════════════════════════════════╣
    ║ 名称：深入理解 Tool Use 机制                          ║
-   ║ 来源模块：claude-code-core                            ║
+   ║ 来源模块：ai-tools-fundamentals                       ║
    ║ 主线位置：完整模式 > 第一部分 > 架构与概念            ║
    ╠═══════════════════════════════════════════════════════╣
    ║ 疑问点：                                              ║
@@ -719,15 +738,17 @@ claude-code-study/
 
 | 模块 | GitHub 仓库 | 官方文档 | 检测方式 |
 |------|------------|---------|----------|
-| claude-code-core | anthropics/claude-code | code.claude.com/docs | 每次询问 |
-| mcp-basics | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
-| agent-sdk | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
-| mcp-advanced | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
-| openclaw-ecosystem | OpenClaw/openclaw | docs.openclaw.org | 每次询问 |
-| everything-claude-code | - | - | 每次询问 |
-| cc-switch | - | - | 每次询问 |
-| spec-kit | anthropics/spec-kit | github.com/anthropics | 每次询问 |
-| projects | - | - | 每次询问 |
+| ai-tools-fundamentals | anthropics/claude-code | code.claude.com/docs | 每次询问 |
+| mcp-protocol | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
+| agent-configuration | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
+| mcp-advanced-config | anthropic-ai/sdk-python | docs.anthropic.com | 每次询问 |
+| ai-orchestration | OpenClaw/openclaw | docs.openclaw.org | 每次询问 |
+| ai-resources-research | - | - | 每次询问 |
+| config-management | - | - | 每次询问 |
+| spec-driven-dev | anthropics/spec-kit | github.com/anthropics | 每次询问 |
+| practical-projects | - | - | 每次询问 |
+
+> 💡 **自定义模块**：添加新模块时，在模块的 `README.md` 中配置学习资源链接。
 
 ### 初始化知识缓存
 
