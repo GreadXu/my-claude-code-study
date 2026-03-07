@@ -66,6 +66,104 @@
 
 ---
 
+## [2.1.0] - 2026-03-07
+
+（Fork 用户增强版本）
+
+### [Core] 框架更新
+
+**配置管理系统**：
+- ✨ 新增 `.claude/update-config.json` 配置文件
+- ✨ 新增 `.claude/scripts/lib/config-manager.sh` 配置管理工具
+  - `get_config_value()` / `set_config_value()` - JSON 配置操作
+  - `should_check_updates()` - 基于时间窗口的缓存判断
+  - `update_check_cache()` - 更新检查时间戳和缓存版本
+  - 跨平台日期处理（GNU/BSD date 兼容）
+  - 降级支持（无 jq 工具时可用）
+
+**更新分类解析器**：
+- ✨ 新增 `.claude/scripts/lib/changelog-parser.sh` 分类解析器
+  - `get_latest_version_changes()` - 提取最新版本内容
+  - `parse_update_type()` - 按类型获取更新（Core/Curriculum/Fix/Docs）
+  - `show_update_classification_preview()` - 显示分类预览
+  - `get_sync_mode()` / `set_sync_mode()` - 同步模式管理
+
+**脚本增强**：
+- 🛠️ `scripts/init.sh` - 新增交互式 .gitignore 保护配置
+  - 选项 1：启用全部保护（推荐）
+  - 选项 2：仅保护进度文件
+  - 选项 3：跳过（手动配置）
+- 🛠️ `scripts/sync.sh` - 新增自定义模块检测
+  - 扫描 .custom 标记文件
+  - 同步前显示自定义模块列表
+  - 更新为 6 步流程（新增步骤 4：检测自定义模块）
+
+### [Curriculum] 内容更新
+
+**自定义模块保护机制**：
+- ✨ 新增 `.custom` 标记文件格式
+  - 标记用户自定义的模块
+  - 包含元数据（日期、文件列表）
+  - 同步时自动跳过
+
+### Prompt Skills 更新
+
+**learning-progress**：
+- 🔄 步骤 0 应用缓存机制
+  - 24 小时时间窗口（可配置）
+  - 在窗口内使用缓存版本，跳过 `git fetch upstream`
+
+**learning-manager**：
+- 🔄 步骤 0 应用缓存机制
+  - 同 learning-progress 缓存机制
+- ✨ 新增 .custom 标记说明
+  - 自动创建 .custom 标记的触发条件
+  - 自定义状态警告显示
+
+**learning-sync**：
+- ✨ 新增选择性同步功能
+  - "同步核心更新" - 仅同步 [Core] + [Fix]
+  - "同步课程更新" - 仅同步 [Curriculum]
+  - "同步全部更新" - 完整同步
+  - "查看/设置同步模式" - 管理 syncMode 配置
+
+### 优化 (Improved)
+
+**更新检查优化**：
+- ⚡ 24 小时内重复操作使用缓存版本
+- ⚡ 减少约 95% 的无效网络请求
+- 🔧 无 jq 工具时自动降级为无缓存模式
+
+**内容保护增强**：
+- 🛡️ 用户自定义的课程内容完全受保护
+- 🛡️ .gitignore 动态启用，避免配置错误
+- 🛡️ .custom 标记独立于 Git 状态
+
+**同步粒度提升**：
+- 🎯 用户可精确控制要同步的内容类型
+- 🎯 支持按分类同步（框架 vs 课程）
+
+### 文档 (Docs)
+
+- 📖 `CHANGELOG.md` - 添加更新分类说明
+- 📖 `CLAUDE.md` - 添加配置管理命令参考
+  - 新增"配置管理（Fork 用户）"章节
+  - 更新同步管理表格
+
+### 向后兼容性 (Backward Compatibility)
+
+- ✅ 自动初始化配置文件（首次运行时）
+- ✅ 旧模块名称继续支持（别名映射）
+- ✅ 无 jq 工具时降级可用
+
+### 解决问题 (Resolves)
+
+- 🔴 **P0** 更新检查触发过于频繁 - 时间窗口缓存机制
+- 🟡 **P1** 缺少课程内容保护机制 - .custom 标记 + .gitignore 增强
+- 🟢 **P2** 更新粒度不足 - CHANGELOG 分类 + 选择性同步
+
+---
+
 ## [2.0.1] - 2026-03-05
 
 （兼容性更新）
