@@ -6,5 +6,5 @@
     "lastCheck": null,
     "cachedUpstreamVersion": null
   },
-  "syncMode": "full"
+  "syncMode": "core"
 }
