@@ -18,6 +18,16 @@
 
 - [ ] 完成 ai-tools-fundamentals [P0]
 - [ ] 完成 mcp-protocol [P1]
+## 🎯 目标关联
+
+本模块服务于你的三阶段目标：
+
+- **第三阶段**：实现跨平台整合，打造统一的 Agent Team
+- **参考案例**：飞书学习助手（OpenClaw + Claude Code + 飞书集成）
+- **预期成果**：Claude Code Agent 和 OpenClaw Agent 能够协作
+
+> 详情请查看：[.claude/GOALS.md](../../.claude/GOALS.md)
+
 - [ ] 完成 openclaw-ecosystem [P1]（推荐）
 - [ ] 具备项目经验或明确的 project 想法
 
@@ -137,7 +147,7 @@
 
 ### 参考项目
 - [MCP 官方示例服务器](https://github.com/modelcontextprotocol/servers)
-- [everything-claude-code](https://github.com/affaan-m/everything-claude-code)
+- [everything-claude-code](https://github.com/affaa-m/everything-claude-code)
 - [cc-switch](https://github.com/farion1231/cc-switch)
 - [spec-kit](https://github.com/github/spec-kit)
 

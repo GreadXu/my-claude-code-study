@@ -48,7 +48,7 @@
     └─ mcp-protocol           [P1🟡] MCP 协议入门
 
     02-进阶探索 (1.5-2周) ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██████████░░░░░░░
-    ├─ agent-configuration    [P2🟢] Agent 配置与使用
+    ├─ agent-configuration    [P1🟡] Agent 配置与使用
     ├─ mcp-advanced-config    [P3🔵] MCP 高级配置
     ├─ ai-orchestration       [P1🟡] AI 编排平台
     └─ ai-resources-research  [P1🟡] AI 资源研究
@@ -105,6 +105,7 @@
 | [03-实战应用](./03-实战应用/) | 2-3 周 | 3 | 配置管理与综合项目 |
 
 **当前进度**：查看 [PROGRESS.md](./PROGRESS.md) 了解详细进度
+**个人目标**：查看 [.claude/GOALS.md](./.claude/GOALS.md) 了解三阶段学习目标
 
 ---
 
@@ -275,7 +276,7 @@ bash scripts/create-module.sh react-basics 01-基础入门 P1
 
 #### 全栈学习路径
 完成所有 P0/P1/P2/P3 模块：
-- 核心能力路径 + `agent-configuration` [P2] + `config-management` [P2] + `spec-driven-dev` [P2] + `mcp-advanced-config` [P3]
+- 核心能力路径 + `agent-configuration` [P1] + `config-management` [P2] + `spec-driven-dev` [P2] + `mcp-advanced-config` [P3]
 - **时间**：约 5-7 周
 
 ---
@@ -309,6 +310,7 @@ ai-learning-template/
 │
 ├── .claude/                     # 系统配置目录
 │   ├── LEARNING_BOOKMARKS.md    # 书签系统（个人数据，.gitignore）
+│   ├── GOALS.md                 # 个人三阶段学习目标（个人数据，.gitignore）
 │   ├── KNOWLEDGE_CACHE.md       # 知识缓存系统状态（个人数据，.gitignore）
 │   └── IDEAS.md                 # 改进想法记录
 │
@@ -319,7 +321,7 @@ ai-learning-template/
 │
 ├── 02-进阶探索/                 # 进阶探索阶段
 │   ├── README.md
-│   ├── agent-configuration/     # Agent 配置与使用 [P2🟢]
+│   ├── agent-configuration/     # Agent 配置与使用 [P1🟡]
 │   ├── mcp-advanced-config/     # MCP 高级配置 [P3🔵]
 │   ├── ai-orchestration/        # AI 编排平台 [P1🟡]
 │   └── ai-resources-research/   # AI 资源研究 [P1🟡]

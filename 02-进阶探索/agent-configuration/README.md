@@ -1,6 +1,6 @@
 # agent-configuration Agent 配置与使用
 
-> **优先级**：P2 🟢 可选
+> **优先级**：P1 🟡 推荐
 > **预计时长**：快速模式 1 天 | 完整模式 3-4 天
 > **难度等级**：⭐⭐ 进阶
 > **前置要求**：ai-tools-fundamentals
@@ -13,6 +13,15 @@
 Claude Agent SDK 是 Anthropic 提供的开发工具包，用于构建能够自主完成复杂任务的 AI Agent。本模块将**聚焦于理解 Agent 概念和配置使用现有 Agent**，而非深入开发自定义 Agent。
 
 > **注意**：本模块已调整为「配置使用」导向。如果你对开发自定义 Agent 感兴趣，可以选学完整模式。
+## 🎯 目标关联
+
+本模块服务于你的三阶段目标：
+
+- **第二阶段**：构建 Claude Code Agent Team，理解 Agent SDK 和配置方法
+- **第三阶段**：为跨平台整合提供 Agent 配置和协作能力
+
+> 详情请查看：[.claude/GOALS.md](../../../.claude/GOALS.md)
+
 
 ## 前置知识
 

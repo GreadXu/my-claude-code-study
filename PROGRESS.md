@@ -1,5 +1,8 @@
 # 学习进度总览
 
+> **个人目标**：打造多平台 Agent Team（Claude Code + OpenClaw）
+> **目标详情**：查看 [.claude/GOALS.md](./.claude/GOALS.md)
+>
 > 本文件用于追踪整个 AI 技术学习计划的整体进度。
 
 ---
@@ -34,7 +37,7 @@
 
 | 模块 | 优先级 | 学习模式 | 状态 | 完成度 |
 |------|--------|----------|------|--------|
-| agent-configuration | P2 🟢 | 未选择 | 未开始 | 0% |
+| agent-configuration | P1 🟡 | 未选择 | 未开始 | 0% |
 | mcp-advanced-config | P3 🔵 | 未选择 | 未开始 | 0% |
 | ai-orchestration | P1 🟡 | 未选择 | 未开始 | 0% |
 | ai-resources-research | P1 🟡 | 未选择 | 未开始 | 0% |
@@ -68,6 +71,8 @@
 | 2026-03-07 | mcp-protocol | 进度更新 | 完成实践指南学习，掌握最佳实践，进度 89% |
 | 2026-03-07 | mcp-protocol | 进度更新 | 完成知识点清单整理，快速模式学习全部完成，进度 100% |
 | 2026-03-07 | mcp-protocol | 完成学习 | 🎉 快速模式完成，耗时 1 天 |
+| 2026-03-07 | - | 目标确立 | 明确三阶段目标：打造多平台 Agent Team |
+| 2026-03-07 | agent-configuration | 优先级调整 | P2 → P1，对第二阶段目标至关重要 |
 
 ---
 
@@ -110,5 +115,5 @@
 
 ### 全栈学习路径
 完成所有 P0/P1/P2/P3 模块：
-- 上述 + agent-configuration [P2] + config-management [P2] + spec-driven-dev [P2] + mcp-advanced-config [P3]
+- 上述 + agent-configuration [P1] + config-management [P2] + spec-driven-dev [P2] + mcp-advanced-config [P3]
 - **时间**：约 8-12 周
