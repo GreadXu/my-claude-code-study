@@ -26,17 +26,8 @@ LEARNING_BOOKMARKS.md
 **/checklist.md
 **/notes.md
 
-# 模块课程内容（从模板复制，用户可自由修改）
-# 同步上游时不会被覆盖，如需更新可从 .templates/modules/ 手动复制
-01-*/**/README.md
-02-*/**/README.md
-03-*/**/README.md
-
 # 知识缓存目录（个人本地缓存）
 **/knowledge/
-
-# 练习文件（个人练习代码）
-**/exercises/
 
 # Claude 个人配置
 .claude/LEARNING_BOOKMARKS.md
@@ -67,3 +58,5 @@ personal-notes/
 # === 模板文件例外（系统文件，必须追踪）===
 !.templates/
 !.templates/**/*.md
+!.templates/**/*.js
+!.templates/**/*.json
