@@ -132,7 +132,7 @@
 │  对 Claude 说：→ "开始学习 ai-tools-fundamentals"                │
 ├─────────────────────────────────────────────────────────────────┤
 │  步骤 3: 同步更新（可选）                                        │
-│  运行同步脚本: bash scripts/sync.sh                              │
+│  GitHub UI: 点击 "Sync fork" → "Update branch"                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -140,9 +140,9 @@
 
 | 特性 | 说明 |
 |------|------|
-| **数据隔离** | 学习进度、笔记、书签完全本地管理，不会同步到 GitHub |
-| **模板更新** | 通过 `scripts/sync.sh` 获取模板仓库的最新功能和修复 |
-| **安全备份** | 支持 `scripts/backup.sh` 备份个人学习数据 |
+| **数据隔离** | 学习进度、笔记、书签完全本地管理，不会被同步覆盖 |
+| **模板更新** | 通过 GitHub "Sync fork" 获取模板最新功能和修复 |
+| **模块模板** | 课程模板存放在 `.templates/modules/`，可自由修改个人版本 |
 
 ### 相关文档
 
@@ -215,20 +215,16 @@
 
 ### 添加自定义模块
 
-使用 `scripts/create-module.sh` 快速创建新模块：
+使用 Skill "新增模块" 快速创建新模块：
 
-```bash
-# 用法
-bash scripts/create-module.sh <模块名> <阶段> <优先级>
-
-# 示例：添加一个 React 学习模块
-bash scripts/create-module.sh react-basics 01-基础入门 P1
+```
+对 Claude 说："新增模块 react-basics，阶段 01-基础入门，优先级 P1"
 ```
 
-脚本将自动：
-1. 创建模块目录结构
-2. 生成 README.md、checklist.md、notes.md 模板
-3. 提示你更新 CLAUDE.md 映射
+或者手动创建模块目录结构：
+1. 创建模块目录（如 `01-基础入门/react-basics/`）
+2. 复制 `.templates/modules/` 中的模板文件
+3. 更新 CLAUDE.md 的模块路径映射
 
 ### 配置知识来源
 
@@ -303,10 +299,8 @@ ai-learning-template/
 │
 ├── scripts/                     # 自动化脚本（系统文件）
 │   ├── init.sh                  # 初始化脚本
-│   ├── sync.sh                  # 同步上游更新
 │   ├── migrate.sh               # 版本迁移工具
-│   ├── backup.sh                # 数据备份工具
-│   └── create-module.sh         # 创建新模块
+│   └── backup.sh                # 数据备份工具（可选）
 │
 ├── .claude/                     # 系统配置目录
 │   ├── LEARNING_BOOKMARKS.md    # 书签系统（个人数据，.gitignore）
