@@ -81,6 +81,19 @@ check_templates() {
         fi
     done
 
+    # 检查课程模板目录
+    if [ ! -d ".templates/modules" ]; then
+        print_warning "课程模板目录不存在：.templates/modules/"
+        print_info "课程 README.md 将不会被自动复制"
+    else
+        local module_template_count=$(find .templates/modules -name "README.md" 2>/dev/null | wc -l)
+        if [ "$module_template_count" -lt 1 ]; then
+            print_warning "课程模板目录为空，课程 README.md 将不会被自动复制"
+        else
+            print_success "找到 $module_template_count 个课程模板"
+        fi
+    fi
+
     print_success "模板文件检查通过"
 }
 
@@ -143,6 +156,16 @@ init_module_files() {
         local module_name=$(basename "$module_dir")
         local checklist_path="$module_dir/checklist.md"
         local notes_path="$module_dir/notes.md"
+        local readme_path="$module_dir/README.md"
+
+        # 从模板复制 README.md（如果不存在）
+        if [ ! -f "$readme_path" ]; then
+            local template_readme=".templates/modules/$module_dir/README.md"
+            if [ -f "$template_readme" ]; then
+                print_info "  复制 $module_name/README.md 从模板..."
+                cp "$template_readme" "$readme_path"
+            fi
+        fi
 
         # 创建 checklist.md
         if [ ! -f "$checklist_path" ]; then
