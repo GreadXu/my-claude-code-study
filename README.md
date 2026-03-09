@@ -149,7 +149,7 @@
 ### 相关文档
 
 - [TEMPLATE_GUIDE.md](./TEMPLATE_GUIDE.md) - 完整的模板使用指南
-- [MIGRATION.md](./MIGRATION.md) - 版本迁移指南
+- [MIGRATION_V3.md](./MIGRATION_V3.md) - v3.0.0 升级指南
 - [CHANGELOG.md](./CHANGELOG.md) - 版本变更历史
 
 ---
@@ -206,7 +206,7 @@
 |------|------|
 | [学习工作流程](./CLAUDE.md) | 完整的学习命令说明（包含书签和缓存系统） |
 | [模板使用指南](./TEMPLATE_GUIDE.md) | Fork + upstream 工作流，自定义学习计划 |
-| [版本迁移指南](./MIGRATION.md) | 版本升级和数据迁移步骤 |
+| [v3.0.0 升级指南](./MIGRATION_V3.md) | Fork 用户升级到 v3.0.0 的步骤 |
 | [Agent Skills 平台指南](./docs/AGENT_SKILLS_PLATFORMS_GUIDE.md) | 全网 Agent Skills 发现和分享平台评估 |
 | [工具改进指南](./.claude/IMPROVEMENT_GUIDE.md) | 如何改进这个学习工具本身 |
 | [.claude/IDEAS.md](./.claude/IDEAS.md) | 学习工具改进想法记录 |
@@ -288,7 +288,7 @@ ai-learning-template/
 ├── CLAUDE.md                    # AI 工作流程配置（命令定义）
 ├── TEMPLATE_GUIDE.md            # 模板使用指南
 ├── CHANGELOG.md                 # 版本变更历史
-├── MIGRATION.md                 # 版本迁移指南
+├── MIGRATION_V3.md              # v3.0.0 升级指南
 │
 ├── .templates/                  # 初始化模板目录（系统文件）
 │   ├── PROGRESS.template.md     # 进度文件模板
