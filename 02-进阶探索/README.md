@@ -14,7 +14,7 @@
 
 | 模块 | 优先级 | 学习模式 | 状态 |
 |------|--------|----------|------|
-| [agent-configuration](./agent-configuration/) | P2 🟢 可选 | - | 未开始 |
+| [agent-configuration) | P1 🟡 推荐 | - | 未开始 |
 | [mcp-advanced-config](./mcp-advanced-config/) | P3 🔵 了解 | - | 未开始 |
 | [ai-orchestration](./ai-orchestration/) | P1 🟡 推荐 | - | 未开始 |
 | [ai-resources-research](./ai-resources-research/) | P1 🟡 推荐 | - | 未开始 |
@@ -53,7 +53,7 @@
 
 完成本阶段后，你将能够：
 
-### agent-configuration [P2]
+### agent-configuration [P1]
 - [ ] 理解 Agent 的核心概念和工作原理
 - [ ] 了解常用 Agent 类型和适用场景
 - [ ] 学习配置和使用现有 Agent
