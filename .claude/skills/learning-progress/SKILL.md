@@ -1,106 +1,39 @@
 ---
-name: learning-status
-description: AI 技术学习状态管理（常驻技能）- 查看学习状态、更新模块进度、共享机制库。当用户说"查看学习状态"、"进度怎么样"、"我学哪了"、"更新进度"、"记录进度"、"打勾"、"查看<模块名>状态"、"<模块名>进度如何"时触发此技能。
+name: learning-progress
+description: AI 技术学习进度管理 - 查看学习状态、更新模块进度。当用户说"查看学习状态"、"进度怎么样"、"我学哪了"、"更新进度"、"记录进度"、"打勾"、"查看<模块名>状态"、"<模块名>进度如何"时触发此技能。
 ---
 
-# Learning Status Skill
-
-> **本技能为常驻技能，提供状态管理和共享机制，其他技能可引用其机制**
+# Learning Progress Skill
 
 ## 功能范围
 - 查看所有模块进度概览
 - 查看特定模块详细状态
 - 更新模块进度（解析 checklist.md 计算百分比）
 - 显示进度条和状态徽章
-- **提供共享机制**：模块路径映射、非阻塞更新检查
 
----
+## 模块路径映射（优先匹配新名称）
 
-## 共享机制
+### 新名称（v2.0）
+- `ai-tools-fundamentals` → `01-基础入门/ai-tools-fundamentals`
+- `mcp-protocol` → `01-基础入门/mcp-protocol`
+- `agent-configuration` → `02-进阶探索/agent-configuration`
+- `mcp-advanced-config` → `02-进阶探索/mcp-advanced-config`
+- `ai-orchestration` → `02-进阶探索/ai-orchestration`
+- `ai-resources-research` → `02-进阶探索/ai-resources-research`
+- `config-management` → `03-实战应用/config-management`
+- `spec-driven-dev` → `03-实战应用/spec-driven-dev`
+- `practical-projects` → `03-实战应用/practical-projects`
 
-> 以下机制可供其他技能引用，避免代码重复
-
-### 模块路径映射（共享）
-
-**用途**：将用户输入的模块名转换为实际目录路径
-
-**新名称（v2.0）**：
-```
-ai-tools-fundamentals → 01-基础入门/ai-tools-fundamentals
-mcp-protocol → 01-基础入门/mcp-protocol
-agent-configuration → 02-进阶探索/agent-configuration
-mcp-advanced-config → 02-进阶探索/mcp-advanced-config
-ai-orchestration → 02-进阶探索/ai-orchestration
-ai-resources-research → 02-进阶探索/ai-resources-research
-config-management → 03-实战应用/config-management
-spec-driven-dev → 03-实战应用/spec-driven-dev
-practical-projects → 03-实战应用/practical-projects
-```
-
-**旧名称（v1.x 向后兼容）**：
-```
-claude-code-core → 01-基础入门/claude-code-core
-mcp-basics → 01-基础入门/mcp-basics
-agent-sdk → 02-进阶探索/agent-sdk
-mcp-advanced → 02-进阶探索/mcp-advanced
-openclaw-ecosystem → 02-进阶探索/openclaw-ecosystem
-everything-claude-code → 02-进阶探索/everything-claude-code
-cc-switch → 03-实战应用/cc-switch
-spec-kit → 03-实战应用/spec-kit
-projects → 03-实战应用/projects
-```
-
-**别名映射**：
-```
-claude-code-core → ai-tools-fundamentals
-mcp-basics → mcp-protocol
-agent-sdk → agent-configuration
-mcp-advanced → mcp-advanced-config
-openclaw-ecosystem → ai-orchestration
-everything-claude-code → ai-resources-research
-cc-switch → config-management
-spec-kit → spec-driven-dev
-projects → practical-projects
-```
-
-### 非阻塞更新检查（带缓存机制，共享）
-
-**用途**：在24小时内避免重复检查上游更新，减少网络请求
-
-**配置文件位置**：`.claude/update-config.json`
-
-**执行逻辑**：
-1. **加载配置管理工具**：
-   - 如不存在，自动初始化默认配置（24小时检查间隔）
-   - 检查 `jq` 工具是否可用（不可用时降级为无缓存模式）
-
-2. **判断是否需要网络检查**：
-   - 检查距离上次检查是否超过 `intervalHours`（默认24小时）
-   - **在时间窗口内**：使用缓存的版本号，跳过 `git fetch upstream`
-   - **超出时间窗口**：执行网络检查并更新缓存
-
-3. **版本比较与提醒存储**：
-   - 从 CHANGELOG.md 提取本地版本
-   - 从缓存或 upstream 获取上游版本
-   - 如上游版本更新，存储更新提醒字符串：
-   ```
-   ╔════════════════════════════════════════════════════════════════╗
-   ║  📢 发现新版本                                                 ║
-   ║                                                                ║
-   ║  当前版本: v2.0.1  |  上游版本: v2.1.0                        ║
-   ║  缓存时间: 2026-03-07T10:30:00Z（24小时内不重复检查）          ║
-   ║                                                                ║
-   ║  建议：学习结束后运行 "同步学习计划" 获取最新功能             ║
-   ╚════════════════════════════════════════════════════════════════╝
-   ```
-
-4. **显示缓存状态**（可选）：
-   - 如使用缓存版本，在提醒中注明"（缓存版本）"
-   - 如首次运行或配置文件不存在，显示一次性提示告知新功能
-
-5. 在最终输出前，如存在更新提醒，则添加到结果开头
-
-**引用方式**：其他技能在需要检查更新时，直接调用此机制，不重复实现
+### 旧名称（v1.x 向后兼容）
+- `claude-code-core` → `01-基础入门/claude-code-core`
+- `mcp-basics` → `01-基础入门/mcp-basics`
+- `agent-sdk` → `02-进阶探索/agent-sdk`
+- `mcp-advanced` → `02-进阶探索/mcp-advanced`
+- `openclaw-ecosystem` → `02-进阶探索/openclaw-ecosystem`
+- `everything-claude-code` → `02-进阶探索/everything-claude-code`
+- `cc-switch` → `03-实战应用/cc-switch`
+- `spec-kit` → `03-实战应用/spec-kit`
+- `projects` → `03-实战应用/projects`
 
 ---
 
@@ -177,7 +110,40 @@ projects → practical-projects
 
 ### 步骤 0：非阻塞更新检查（带缓存机制）
 
-引用共享的"非阻塞更新检查"机制，详见上方"共享机制"章节
+**配置文件位置**：`.claude/update-config.json`
+
+**执行逻辑**：
+1. **加载配置管理工具**：
+   - 如不存在，自动初始化默认配置（24小时检查间隔）
+   - 检查 `jq` 工具是否可用（不可用时降级为无缓存模式）
+
+2. **判断是否需要网络检查**：
+   - 检查距离上次检查是否超过 `intervalHours`（默认24小时）
+   - **在时间窗口内**：使用缓存的版本号，跳过 `git fetch upstream`
+   - **超出时间窗口**：执行网络检查并更新缓存
+
+3. **版本比较与提醒存储**：
+   - 从 CHANGELOG.md 提取本地版本
+   - 从缓存或 upstream 获取上游版本
+   - 如上游版本更新，存储更新提醒字符串：
+   ```
+   ╔════════════════════════════════════════════════════════════════╗
+   ║  📢 发现新版本                                                 ║
+   ║                                                                ║
+   ║  当前版本: v2.0.1  |  上游版本: v2.1.0                        ║
+   ║  缓存时间: 2026-03-07T10:30:00Z（24小时内不重复检查）          ║
+   ║                                                                ║
+   ║  建议：学习结束后运行 "同步学习计划" 获取最新功能             ║
+   ╚════════════════════════════════════════════════════════════════╝
+
+   [以下是命令结果...]
+   ```
+
+4. **显示缓存状态**（可选）：
+   - 如使用缓存版本，在提醒中注明"（缓存版本）"
+   - 如首次运行或配置文件不存在，显示一次性提示告知新功能
+
+5. 在最终输出前，如存在更新提醒，则添加到结果开头
 
 ### 步骤 1：读取模块的 `checklist.md`
 

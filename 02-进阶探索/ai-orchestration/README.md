@@ -14,16 +14,6 @@ OpenClaw 是开源的**本地优先 AI 编排平台**，提供 Gateway 架构、
 
 > **重点**：本模块聚焦于「AI 能力集成与编排」，通过配置 OpenClaw 作为编排层，协调多个 AI Agent（包括 Claude Code）协同工作。
 
-n## 🎯 目标关联
-
-本模块服务于你的三阶段目标：
-
-- **第一阶段**：掌握 OpenClaw 平台的使用和配置
-- **第二阶段**：构建 OpenClaw Agent Team，理解 Gateway 架构和 Skills 系统
-- **第三阶段**：作为跨平台整合的关键组件，实现与 Claude Code 的协作
-
-> 详情请查看：[.claude/GOALS.md](../../../.claude/GOALS.md)
-
 ## 前置知识
 
 - [ ] 完成 claude-code-core 模块学习
