@@ -121,6 +121,8 @@
 
 ### 快速开始
 
+> ⚠️ **重要提示**：首次使用前请运行 `bash scripts/init.sh` 初始化课程内容。
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  步骤 1: Fork 并 Clone                                          │
@@ -292,13 +294,36 @@ ai-learning-template/
 │   ├── PROGRESS.template.md     # 进度文件模板
 │   ├── KNOWLEDGE_CACHE.template.md
 │   ├── LEARNING_BOOKMARKS.template.md
-│   └── module/                  # 模块模板
-│       ├── checklist.template.md
-│       ├── notes.template.md
-│       └── README.template.md   # 新模块模板
+│   ├── module/                  # 模块模板
+│   │   ├── checklist.template.md
+│   │   ├── notes.template.md
+│   │   └── README.template.md   # 新模块模板
+│   └── modules/                 # 课程内容模板（系统文件）
+│       ├── 01-基础入门/
+│       │   ├── README.md        # 分类导学
+│       │   ├── ai-tools-fundamentals/
+│       │   │   ├── README.md
+│       │   │   └── exercises/   # 练习文件模板
+│       │   └── mcp-protocol/
+│       │       └── README.md
+│       ├── 02-进阶探索/
+│       │   ├── README.md        # 分类导学
+│       │   ├── agent-configuration/
+│       │   ├── mcp-advanced-config/
+│       │   ├── ai-orchestration/
+│       │   │   ├── README.md
+│       │   │   └── exercises/   # 练习文件模板
+│       │   └── ai-resources-research/
+│       └── 03-实战应用/
+│           ├── README.md        # 分类导学
+│           ├── config-management/
+│           ├── spec-driven-dev/
+│           └── practical-projects/
+│               ├── README.md
+│               └── feishu-learning-assistant/  # 实战项目模板
 │
 ├── scripts/                     # 自动化脚本（系统文件）
-│   ├── init.sh                  # 初始化脚本
+│   ├── init.sh                  # 初始化脚本（复制课程内容）
 │   ├── migrate.sh               # 版本迁移工具
 │   └── backup.sh                # 数据备份工具（可选）
 │
@@ -307,19 +332,19 @@ ai-learning-template/
 │   ├── KNOWLEDGE_CACHE.md       # 知识缓存系统状态（个人数据，.gitignore）
 │   └── IDEAS.md                 # 改进想法记录
 │
-├── 01-基础入门/                 # 基础入门阶段
-│   ├── README.md                # 阶段导学
+├── 01-基础入门/                 # 用户目录（由 init.sh 创建）
+│   ├── README.md                # 阶段导学（从模板复制）
 │   ├── ai-tools-fundamentals/   # AI 工具基础 [P0🔴]
 │   └── mcp-protocol/            # MCP 协议入门 [P1🟡]
 │
-├── 02-进阶探索/                 # 进阶探索阶段
+├── 02-进阶探索/                 # 用户目录（由 init.sh 创建）
 │   ├── README.md
 │   ├── agent-configuration/     # Agent 配置与使用 [P2🟢]
 │   ├── mcp-advanced-config/     # MCP 高级配置 [P3🔵]
 │   ├── ai-orchestration/        # AI 编排平台 [P1🟡]
 │   └── ai-resources-research/   # AI 资源研究 [P1🟡]
 │
-├── 03-实战应用/                 # 实战应用阶段
+├── 03-实战应用/                 # 用户目录（由 init.sh 创建）
 │   ├── README.md
 │   ├── config-management/       # 配置管理工具 [P2🟢]
 │   ├── spec-driven-dev/         # 规范驱动开发 [P2🟢]
@@ -330,6 +355,11 @@ ai-learning-template/
 └── memory/                      # 长期记忆存储
     └── MEMORY.md                # 持久化记忆文件
 ```
+
+> **架构说明**：
+> - **系统内容**：`.templates/modules/` 包含所有课程内容、练习文件、实战项目模板
+> - **用户数据**：`01-*/02-*/03-*/` 目录由 `init.sh` 创建，包含用户的个人进度和笔记
+> - **数据隔离**：用户可自由修改个人版本，同步上游时不会被覆盖
 
 ---
 
@@ -435,7 +465,8 @@ ai-learning-template/
 | 2026-03-03 | - | 版本 1.3.0 | 学习计划同步功能 |
 | 2026-03-03 | practical-projects | feishu-learning-assistant | 飞书学习助手实战项目 |
 | 2026-03-05 | - | 版本 2.0.0 | 项目重新定位为"AI 技术学习模板" |
+| 2026-03-09 | - | 版本 3.0.0 | 纯模板化架构 - 所有系统内容移入 .templates/modules/ |
 
 ---
 
-*创建于 2026-02-26 | 最后更新 2026-03-05*
+*创建于 2026-02-26 | 最后更新 2026-03-09*

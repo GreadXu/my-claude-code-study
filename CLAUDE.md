@@ -21,29 +21,39 @@
 
 ```
 ai-learning-template/
-├── 01-基础入门/                 # P0/P1 必学模块
+├── .templates/                  # 系统模板目录（Git 追踪）
+│   └── modules/                 # 课程内容模板
+│       ├── 01-基础入门/         # 分类导学、模块 README、练习文件
+│       ├── 02-进阶探索/         # 分类导学、模块 README、练习文件
+│       └── 03-实战应用/         # 分类导学、模块 README、实战项目
+├── 01-基础入门/                 # P0/P1 必学模块（由 init.sh 创建）
 │   ├── ai-tools-fundamentals/   # P0 AI 工具基础
 │   └── mcp-protocol/            # P1 MCP 协议入门
-├── 02-进阶探索/                 # P1/P2 进阶模块
+├── 02-进阶探索/                 # P1/P2 进阶模块（由 init.sh 创建）
 │   ├── agent-configuration/     # P2 Agent 配置与使用
 │   ├── mcp-advanced-config/     # P3 MCP 高级配置
 │   ├── ai-orchestration/        # P1 AI 编排平台
 │   └── ai-resources-research/   # P1 AI 资源研究
-├── 03-实战应用/                 # P1/P2 实战模块
+├── 03-实战应用/                 # P1/P2 实战模块（由 init.sh 创建）
 │   ├── config-management/       # P2 配置管理工具
 │   ├── spec-driven-dev/         # P2 规范驱动开发
 │   └── practical-projects/      # P1 综合实战项目
-├── PROGRESS.md                  # 总体进度追踪
-├── LEARNING_BOOKMARKS.md        # 学习书签系统
-├── KNOWLEDGE_CACHE.md           # 知识缓存状态
+├── PROGRESS.md                  # 总体进度追踪（个人数据，.gitignore）
+├── LEARNING_BOOKMARKS.md        # 学习书签系统（个人数据，.gitignore）
+├── KNOWLEDGE_CACHE.md           # 知识缓存状态（个人数据，.gitignore）
 ├── CLAUDE.md                    # 本文件 - AI 工作流程配置
 └── README.md                    # 项目说明文档
 ```
 
+### 架构说明（v3.0.0）
+- **系统内容**：`.templates/modules/` 包含所有课程内容、练习文件、实战项目
+- **用户目录**：`01-*/02-*/03-*/` 由 `init.sh` 创建，包含用户的个人进度和笔记
+- **数据隔离**：用户可自由修改个人版本，同步上游时不会被覆盖
+
 ### 模块组织说明
-- 每个模块包含：`README.md`、`checklist.md`、`notes.md`
+- 每个模块包含：`README.md`（从模板复制）、`checklist.md`（个人数据）、`notes.md`（个人数据）
 - 知识缓存存储在：`模块名/knowledge/` 目录
-- 练习文件存储在：`模块名/exercises/` 目录
+- 练习文件存储在：`模块名/exercises/` 目录（从模板复制）
 
 ---
 

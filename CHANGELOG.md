@@ -32,6 +32,94 @@
 
 ---
 
+## [3.0.0] - 2026-03-09
+
+### [Core] 纯模板化架构 - 重大重构
+
+- 🏗️ **完全重新设计模板架构**
+  - **所有系统内容移入 `.templates/modules/`**
+    - 分类导学 README.md 移入 `.templates/modules/01-*/README.md`
+    - 模块 README.md 移入 `.templates/modules/模块名/README.md`
+    - 练习文件移入 `.templates/modules/模块名/exercises/`
+    - 实战项目移入 `.templates/modules/03-实战应用/practical-projects/feishu-learning-assistant/`
+  - **用户目录完全由 `init.sh` 创建**
+    - `01-*/02-*/03-*/` 目录现在完全由 init.sh 创建
+    - 不再包含任何被 Git 追踪的系统文件
+    - 用户的所有修改都是本地的，不会被同步覆盖
+
+- 📝 **更新 `init.sh` 脚本**
+  - 新增 `init_category_readmes()` - 复制分类导学
+  - 新增 `init_exercises_directories()` - 复制练习文件
+  - 新增 `init_practical_projects()` - 复制实战项目
+  - 重构 `init_module_files()` - 仅处理模块 README.md 和用户数据文件
+
+- 🔧 **简化 `.gitignore`**
+  - 删除复杂的 `01-*/**/README.md` 规则（不再需要）
+  - 删除 `**/exercises/` 规则（现在在 .templates/ 中）
+  - 保留用户数据保护：`**/checklist.md`、`**/notes.md`、`**/knowledge/`
+
+- 📚 **新增迁移脚本**
+  - `scripts/migrate-v3.sh` - 帮助用户从 v2.x 迁移到 v3.0
+  - 支持 `--dry-run` 预演模式
+  - 提供详细的迁移步骤和 Git 命令
+
+### [Docs] 文档更新
+
+- 📖 **README.md**
+  - 更新目录结构说明，反映新架构
+  - 添加架构说明：系统内容 vs 用户数据
+  - 新增 v3.0.0 学习日志条目
+
+- 📖 **TEMPLATE_GUIDE.md**
+  - 待更新：添加 v3.0.0 架构说明
+
+### [Curriculum] 课程内容
+
+- ✅ **课程模板全部移入 `.templates/modules/`**
+  - 29 个文件已迁移到 .templates/modules/
+  - 包含所有分类导学、模块 README、练习文件、实战项目
+
+### 🔄 Fork 用户同步指南
+
+**第一次同步此变更**：
+1. 同步后会发现 `01-*/02-*/03-*/` 目录消失或为空
+2. 运行 `bash scripts/init.sh` 恢复完整目录
+3. init.sh 会从 `.templates/modules/` 复制所有课程内容
+
+**后续修改保护**：
+- 用户在 `01-*/02-*/03-*/` 中的所有修改都是本地的
+- 这些目录完全不受 Git 追踪
+- 同步更新时不会有任何冲突
+
+### ⚠️ 破坏性变更
+
+- **目录结构变更**：`01-*/02-*/03-*/` 不再包含被追踪的系统文件
+- **迁移要求**：Fork 用户需要运行 `init.sh` 恢复目录
+- **向后兼容性**：v2.x 用户需要迁移（可使用 `migrate-v3.sh` 脚本）
+
+---
+
+## [2.2.0] - 2026-03-09
+
+### [Core] 架构简化
+
+- 🎯 **简化模板架构**
+  - 删除模块目录中的 README.md 物理文件
+  - 只保留 `.templates/modules/` 作为课程内容的唯一源头
+  - 模块目录的 README.md 现在由 `init.sh` 从模板复制
+  - **优势**：架构清晰、避免混淆、更新简单
+
+- 📝 **文档更新**
+  - README.md 添加 init.sh 运行提示
+  - TEMPLATE_GUIDE.md 更新架构说明
+  - 新增 FAQ：模块 README.md 被删除后的恢复步骤
+
+- 🔄 **Fork 用户同步指南**
+  - 第一次同步此变更后，运行 `bash scripts/init.sh` 恢复 README.md
+  - 后续修改受 .gitignore 保护，同步时不会被覆盖
+
+---
+
 ## [2.1.1] - 2026-03-08
 
 ### [Docs] 文档更新

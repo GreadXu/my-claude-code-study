@@ -295,6 +295,22 @@ rm -rf .temp-update
 
 ## 📂 文件分类说明
 
+### 架构原则：单一模板来源
+
+> **⚠️ 重要**：课程内容（README.md）的唯一源头是 `.templates/modules/` 目录。模块目录中的 README.md 由 `init.sh` 从模板复制而来。
+
+**架构优势**：
+- ✅ **清晰分离**：模板来源（`.templates/`）和用户数据（模块目录）明确分离
+- ✅ **安全更新**：模板更新不会覆盖用户自定义的课程内容
+- ✅ **按需复制**：用户运行 `init.sh` 时才创建个人副本
+
+**工作流程**：
+```
+.templates/modules/          # Git 追踪的唯一模板来源
+        ↓ init.sh 复制
+01-基础入门/模块名/README.md  # 用户的个人副本（.gitignore 保护）
+```
+
 ### 系统文件（Git 追踪）
 
 这些文件由模板仓库维护，更新时会被覆盖：
@@ -302,10 +318,11 @@ rm -rf .temp-update
 | 类型 | 文件/目录 | 说明 |
 |------|-----------|------|
 | **配置** | `.gitignore`, `CLAUDE.md` | 系统配置 |
-| **模板** | `.templates/` | 初始化模板 |
+| **课程模板** | `.templates/modules/` | 课程内容的唯一模板来源 |
+| **文件模板** | `.templates/module/` | checklist、notes 等文件模板 |
 | **文档** | `README.md`, `TEMPLATE_GUIDE.md` | 使用文档 |
 | **脚本** | `scripts/` | 自动化脚本 |
-| **模块结构** | `XX-阶段名称/*/README.md` | 模块导学 |
+| **分类导学** | `XX-阶段名称/README.md` | 阶段概述（非模块内容） |
 
 ### 个人数据（Git 忽略）
 
@@ -318,6 +335,7 @@ rm -rf .temp-update
 | **缓存** | `.claude/KNOWLEDGE_CACHE.md` | 缓存状态 |
 | **清单** | `**/checklist.md` | 模块学习清单 |
 | **笔记** | `**/notes.md` | 学习笔记 |
+| **课程副本** | `01-*/**/README.md` | 从模板复制的课程内容（可自由修改） |
 | **缓存** | `**/knowledge/` | 知识缓存目录 |
 
 ### 自定义模块（.custom 标记）
@@ -597,7 +615,22 @@ rm 模块目录/.custom
 用户：查看同步模式
 ```
 
-### Q9: 更新检查太频繁了，可以调整吗？
+### Q9: 模块目录的 README.md 被删除了怎么办？
+
+**A**: 这是正常的架构设计。模块 README.md 的唯一来源是 `.templates/modules/`。恢复步骤：
+
+```bash
+# 运行初始化脚本重新复制
+bash scripts/init.sh
+```
+
+**架构说明**：
+- `.templates/modules/` 是 Git 追踪的唯一模板来源
+- 模块目录的 README.md 由 `init.sh` 从模板复制
+- 复制后的文件受 `.gitignore` 保护，可自由修改
+- 同步更新时，你的修改不会被覆盖
+
+### Q10: 更新检查太频繁了，可以调整吗？
 
 **A**: 可以。配置文件位于 `.claude/update-config.json`：
 ```json
@@ -613,6 +646,20 @@ rm 模块目录/.custom
 ```bash
 用户：清除更新缓存  # 强制下次检查更新
 ```
+
+### Q12: Fork 用户同步后模块 README.md 消失了怎么办？
+
+**A**: 这是因为模板仓库删除了模块目录中的 README.md（架构简化）。恢复步骤：
+
+```bash
+# 运行初始化脚本
+bash scripts/init.sh
+```
+
+**一次操作，永久保护**：
+- 初始化后，你的 README.md 受 `.gitignore` 保护
+- 后续同步更新不会影响你的修改
+- 如需更新课程内容，手动从 `.templates/modules/` 复制
 
 ---
 
@@ -736,4 +783,4 @@ bash scripts/backup.sh
 ---
 
 **创建日期**：2026-02-27
-**最后更新**：2026-03-07 (v2.1.0)
+**最后更新**：2026-03-09 (v2.2.0)

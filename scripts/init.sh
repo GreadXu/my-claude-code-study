@@ -141,19 +141,82 @@ init_bookmarks_file() {
     print_success "LEARNING_BOOKMARKS.md 已创建"
 }
 
+init_category_readmes() {
+    print_info "复制分类导学 README.md..."
+
+    # 复制分类导学 README.md（如果不存在）
+    local categories=("01-基础入门" "02-进阶探索" "03-实战应用")
+
+    for category in "${categories[@]}"; do
+        if [ ! -f "$category/README.md" ]; then
+            local template_readme=".templates/modules/$category/README.md"
+            if [ -f "$template_readme" ]; then
+                print_info "  复制 $category/README.md 从模板..."
+                mkdir -p "$category"
+                cp "$template_readme" "$category/README.md"
+            fi
+        fi
+    done
+
+    print_success "分类导学 README.md 已复制"
+}
+
+init_exercises_directories() {
+    print_info "复制练习文件目录..."
+
+    # 复制 ai-tools-fundamentals/exercises（如果不存在）
+    if [ ! -d "01-基础入门/ai-tools-fundamentals/exercises" ]; then
+        local template_exercises=".templates/modules/01-基础入门/ai-tools-fundamentals/exercises"
+        if [ -d "$template_exercises" ]; then
+            print_info "  复制 ai-tools-fundamentals/exercises 从模板..."
+            mkdir -p "01-基础入门/ai-tools-fundamentals"
+            cp -r "$template_exercises" "01-基础入门/ai-tools-fundamentals/exercises"
+        fi
+    fi
+
+    # 复制 ai-orchestration/exercises（如果不存在）
+    if [ ! -d "02-进阶探索/ai-orchestration/exercises" ]; then
+        local template_exercises=".templates/modules/02-进阶探索/ai-orchestration/exercises"
+        if [ -d "$template_exercises" ]; then
+            print_info "  复制 ai-orchestration/exercises 从模板..."
+            mkdir -p "02-进阶探索/ai-orchestration"
+            cp -r "$template_exercises" "02-进阶探索/ai-orchestration/exercises"
+        fi
+    fi
+
+    print_success "练习文件目录已复制"
+}
+
+init_practical_projects() {
+    print_info "复制实战项目目录..."
+
+    # 复制 feishu-learning-assistant（如果不存在）
+    if [ ! -d "03-实战应用/practical-projects/feishu-learning-assistant" ]; then
+        local template_project=".templates/modules/03-实战应用/practical-projects/feishu-learning-assistant"
+        if [ -d "$template_project" ]; then
+            print_info "  复制 feishu-learning-assistant 从模板..."
+            mkdir -p "03-实战应用/practical-projects"
+            cp -r "$template_project" "03-实战应用/practical-projects/feishu-learning-assistant"
+        fi
+    fi
+
+    print_success "实战项目目录已复制"
+}
+
 init_module_files() {
     print_info "初始化模块文件..."
 
     # 查找所有模块目录
-    local module_dirs=$(find . -type d \( -name "ai-tools-fundamentals" -o -name "mcp-protocol" -o -name "agent-configuration" -o -name "mcp-advanced-config" -o -name "ai-orchestration" -o -name "ai-resources-research" -o -name "config-management" -o -name "spec-driven-dev" -o -name "practical-projects" \) 2>/dev/null)
+    local module_dirs=$(find .templates/modules -mindepth 3 -maxdepth 3 -type d \( -name "ai-tools-fundamentals" -o -name "mcp-protocol" -o -name "agent-configuration" -o -name "mcp-advanced-config" -o -name "ai-orchestration" -o -name "ai-resources-research" -o -name "config-management" -o -name "spec-driven-dev" -o -name "practical-projects" \) 2>/dev/null)
 
-    for module_dir in $module_dirs; do
-        # 跳过模板目录
-        if [[ "$module_dir" == *".templates"* ]]; then
-            continue
-        fi
-
+    for module_template_dir in $module_dirs; do
+        # 获取相对路径（去掉 .templates/modules/ 前缀）
+        local module_dir="${module_template_dir#.templates/modules/}"
         local module_name=$(basename "$module_dir")
+
+        # 创建模块目录
+        mkdir -p "$module_dir"
+
         local checklist_path="$module_dir/checklist.md"
         local notes_path="$module_dir/notes.md"
         local readme_path="$module_dir/README.md"
@@ -173,8 +236,8 @@ init_module_files() {
 
             # 获取模块优先级（从 README.md 中提取）
             local priority=""
-            if [ -f "$module_dir/README.md" ]; then
-                priority=$(grep -oP "P[0-3]" "$module_dir/README.md" | head -1)
+            if [ -f "$readme_path" ]; then
+                priority=$(grep -oP "P[0-3]" "$readme_path" | head -1)
             fi
             [ -z "$priority" ] && priority="P1"
 
@@ -397,31 +460,46 @@ main() {
     echo ""
 
     # 步骤 1：检查模板文件
-    print_header "步骤 1/6: 检查模板文件 "
+    print_header "步骤 1/8: 检查模板文件 "
     check_templates
     echo ""
 
     # 步骤 2：创建进度文件
-    print_header "步骤 2/6: 创建进度文件 "
+    print_header "步骤 2/8: 创建进度文件 "
     init_progress_file
     echo ""
 
     # 步骤 3：创建书签和缓存文件
-    print_header "步骤 3/6: 创建书签和缓存文件 "
+    print_header "步骤 3/8: 创建书签和缓存文件 "
     init_cache_file
     init_bookmarks_file
     echo ""
 
-    # 步骤 4：初始化模块文件
-    print_header "步骤 4/6: 初始化模块文件 "
+    # 步骤 4：复制分类导学
+    print_header "步骤 4/8: 复制分类导学 "
+    init_category_readmes
+    echo ""
+
+    # 步骤 5：复制练习文件
+    print_header "步骤 5/8: 复制练习文件 "
+    init_exercises_directories
+    echo ""
+
+    # 步骤 6：复制实战项目
+    print_header "步骤 6/8: 复制实战项目 "
+    init_practical_projects
+    echo ""
+
+    # 步骤 7：初始化模块文件
+    print_header "步骤 7/8: 初始化模块文件 "
     init_module_files
     echo ""
 
-    # 步骤 5：配置 .gitignore 保护
+    # 步骤 8：配置 .gitignore 保护
     configure_gitignore_protection
 
-    # 步骤 6：配置 upstream 和验证
-    print_header "步骤 6/6: 配置与验证 "
+    # 步骤 9：配置 upstream 和验证
+    print_header "步骤 8/8: 配置与验证 "
     configure_upstream
     verify_gitignore
     echo ""
