@@ -2,17 +2,79 @@
 
 > **来源**：OpenClaw/openclaw GitHub 仓库
 > **文档**：docs/start/openclaw.md, docs/start/getting-started.md
-> **更新日期**：2026-03-09
+> **更新日期**：2026-03-10
 
 ---
 
 ## 前置条件
 
+### 系统要求
+
 在开始使用 OpenClaw 之前，确保满足以下条件：
 
-- ✅ 已安装和配置 OpenClaw
-- ✅ 已完成入门引导（参见 [Getting Started](/start/getting-started)）
-- ✅ 拥有第二个手机号码（SIM/eSIM/预付费）用于助手
+- ✅ **Node.js 版本**：Node **22+**（运行时基线）
+- ✅ **包管理器**：pnpm（首选）或 Bun
+- ✅ **操作系统**：macOS, Linux, Windows (WSL2)
+- ✅ **第二个手机号码**：SIM/eSIM/预付费卡，用于助手
+- ✅ **AI API 访问**：Anthropic/ OpenAI/ Gemini API 密钥
+
+### 安装步骤
+
+#### 1. 克隆仓库
+
+```bash
+git clone https://github.com/OpenClaw/openclaw.git
+cd openclaw
+```
+
+#### 2. 安装依赖
+
+```bash
+# 使用 pnpm（首选）
+pnpm install
+
+# 或使用 Bun
+bun install
+
+# 不推荐 npm（可能出现锁文件问题）
+```
+
+#### 3. 构建项目
+
+```bash
+# 开发构建
+pnpm build
+
+# 生产构建
+pnpm build:prod
+```
+
+#### 4. 全局安装 CLI（可选）
+
+```bash
+# 从本地安装
+pnpm install -g .
+
+# 或使用 npx 运行（无需安装）
+npx openclaw <command>
+```
+
+### 开发环境设置
+
+**推荐使用 Bun 进行开发**：
+```bash
+# 安装 Bun
+curl -fsSL https://bun.sh/install | bash
+
+# 使用 Bun 运行 TypeScript
+bun run dev
+```
+
+**生产环境使用 Node**：
+```bash
+# 运行构建的输出
+node dist/index.js
+```
 
 ---
 
@@ -23,10 +85,121 @@
 - 读取/写入工作区中的文件
 - 通过 WhatsApp/Telegram/Discord/Mattermost 发送消息
 
-**开始保守**：
-1. ✅ 始终设置 `channels.whatsapp.allowFrom`
-2. ✅ 使用专用 WhatsApp 号码作为助手
-3. ✅ 禁用心跳直到你信任设置：`agents.defaults.heartbeat.every: "0m"`
+### 安全配置最佳实践
+
+**开始保守**（初始设置时）：
+
+#### 1. 始终设置 allowFrom（必需）
+
+```json5
+{
+  channels: {
+    whatsapp: {
+      // ⚠️ 安全：限制消息来源
+      allowFrom: ["+15555550123"],  // 你的个人号码
+    },
+  },
+}
+```
+
+**allowFrom 作用**：
+- ✅ 只允许指定号码发送消息给 Agent
+- ✅ 防止未经授权的访问
+- ✅ 即使 WhatsApp 被黑客攻击，也保护你的 Agent
+
+**高级配置**：
+```json5
+{
+  channels: {
+    whatsapp: {
+      allowFrom: [
+        "+15555550123",  // 你的号码
+        "+15555550456",  // 信任的家人/朋友
+      ],
+    },
+  },
+}
+```
+
+#### 2. 使用专用手机号码（强烈推荐）
+
+**两手机设置**：
+```
+你的手机（个人）          第二手机（助手）
+    WhatsApp                   WhatsApp
+  +1-555-YOU      →       +1-555-ASSIST
+                                  ↓
+                          你的 Mac (openclaw)
+                            Pi agent
+```
+
+**为什么推荐两手机？**
+- ❌ 如果将你的个人 WhatsApp 链接到 OpenClaw：
+  - 发给你的每条消息都变成 "Agent 输入"
+  - 隐私问题：所有个人消息被 AI 处理
+  - 安全问题：无法控制谁给你发消息
+
+- ✅ 使用专用号码：
+  - 完全控制谁可以联系 Agent
+  - 保护个人隐私
+  - 清晰的工作/个人边界
+
+**第二号码选择**：
+- 📱 廉价预付费卡
+- 📱 Google Voice（如可用）
+- 📱 专用 eSIM 服务
+
+#### 3. 禁用心跳直到信任（安全起点）
+
+```json5
+{
+  agent: {
+    heartbeat: {
+      every: "0m",  // 禁用心跳
+    },
+  },
+}
+```
+
+**心跳安全风险**：
+- 心跳会定期触发 Agent 自主行动
+- 未测试时可能意外执行危险操作
+- 可能消耗大量 API 额度
+
+**逐步启用策略**：
+
+| 阶段 | 设置 | 说明 |
+|------|------|------|
+| **初始** | `"0m"` | 完全禁用 |
+| **测试后** | `"1h"` | 每小时一次，观察行为 |
+| **信任后** | `"30m"` | 默认频率 |
+| **高级** | `"15m"` | 频繁监控 |
+
+#### 4. 群组安全配置
+
+```json5
+{
+  channels: {
+    whatsapp: {
+      groups: {
+        "*": {
+          requireMention: true,  // 必须提及才响应
+        },
+        "Family Group": {
+          requireMention: false,  // 家人群自动响应
+        },
+      },
+    },
+  },
+}
+```
+
+**安全考虑**：
+- ✅ 默认 `requireMention: true`
+- ✅ 使用 `mentionPatterns` 控制触发方式
+- ✅ 避免在大型群组中自动响应
+
+---
 
 ---
 

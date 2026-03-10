@@ -181,29 +181,79 @@ OpenClaw 支持主动模式，通过心跳系统定期触发 Agent 行为。
 
 ### 5. 媒体处理
 
-#### 入站媒体
+#### 入站媒体（Inbound Media）
 
-入站附件（图片/音频/文档）可以通过模板传递给命令：
+入站附件（图片/音频/文档）可以通过模板变量传递给命令：
 
-| 模板变量 | 说明 |
-|----------|------|
-| `{{MediaPath}}` | 本地临时文件路径 |
-| `{{MediaUrl}}` | 伪 URL |
-| `{{Transcript}}` | 音频转录（如果启用） |
+| 模板变量 | 说明 | 示例值 |
+|----------|------|--------|
+| `{{MediaPath}}` | 本地临时文件路径 | `/tmp/openclaw/media/image-123.png` |
+| `{{MediaUrl}}` | 伪 URL（用于引用） | `media://image-123.png` |
+| `{{Transcript}}` | 音频转录文本（如果启用） | "你好，请帮我..." |
 
-#### 出站媒体
+**支持的媒体类型**：
+- 📷 图片：PNG, JPG, JPEG, GIF, WebP
+- 🎵 音频：MP3, M4A, WAV, OGG
+- 📄 文档：PDF, TXT, MD（文本提取）
 
-Agent 可以通过包含媒体来发送附件：
+**入站处理流程**：
+```
+1. 渠道接收附件
+2. 下载到临时目录 /tmp/openclaw/media/
+3. 生成唯一文件名
+4. 设置模板变量
+5. 传递给 Agent 上下文
+```
+
+#### 出站媒体（Outbound Media）
+
+Agent 可以通过特殊语法发送附件：
 
 ```
-Here's the screenshot.
-MEDIA:https://example.com/screenshot.png
+这是您要求的截图。
+
+MEDIA:/tmp/openclaw/screenshot.png
+
+请查看上面的图片。
 ```
 
-**规则**：
-- `MEDIA:<path-or-url>` 必须在单独一行
-- 行内不能有空格
-- OpenClaw 会提取这些内容并将其作为媒体与文本一起发送
+**MEDIA 标签规则**：
+- ✅ 必须在单独一行
+- ✅ 格式：`MEDIA:<path-or-url>`
+- ❌ 行内不能有空格（`MEDIA: /path` 无效）
+- ✅ 支持本地路径和 HTTP/HTTPS URL
+- ✅ 多个媒体文件可连续使用
+
+**出站处理流程**：
+```
+1. Agent 输出包含 MEDIA: 标签
+2. OpenClaw 解析并提取路径
+3. 验证文件存在性
+4. 根据渠道上传/发送
+5. 从最终消息中移除 MEDIA: 标签
+```
+
+#### 媒体处理配置
+
+**音频转录配置**：
+```json5
+{
+  channels: {
+    whatsapp: {
+      audio: {
+        transcribe: true,        // 启用转录
+        language: "zh-CN",       // 转录语言
+        provider: "openai",      // 转录服务提供商
+      },
+    },
+  },
+}
+```
+
+**媒体大小限制**：
+- WhatsApp: 100MB
+- Telegram: 50MB (文档), 10MB (音频)
+- Discord: 25MB (免费), 500MB (Nitro)
 
 ---
 
@@ -264,30 +314,117 @@ OpenClaw 的 Agent 可以：
 
 ---
 
-### 8. 插件系统
+### 8. 插件系统（深度）
 
 #### 插件 API 特点
 
-- ✅ **广泛而强大**
-- ✅ **NPM 包分发**
-- ✅ **本地扩展加载**（用于开发）
-- ✅ **Core 保持精简**
+- ✅ **广泛而强大**：提供完整的扩展能力
+- ✅ **NPM 包分发**：首选分发方式，便于版本管理
+- ✅ **本地扩展加载**：用于开发和测试
+- ✅ **Core 保持精简**：核心功能最小化，可选功能插件化
 
-#### 插件路径
+#### 插件开发路径
 
-**首选路径**：NPM 包分发 + 本地扩展加载用于开发
+**首选路径**：NPM 包分发
 
-**社区插件**：
-- 插件市场：https://docs.openclow.ai/plugins/community
+**开发流程**：
+1. 创建独立的 NPM 包
+2. 实现插件 API 接口
+3. 发布到 NPM 仓库
+4. 用户通过 `npm install` 安装
+5. 在配置中激活插件
+
+**社区生态**：
+- 插件市场：ClawHub (clawhub.ai)
 - PR 标准：有意加入核心的插件门槛很高
+- 推荐先在社区验证
 
 #### Skills vs Plugins
 
-| Skills | Plugins |
-|--------|---------|
-| 仍随核心一起发布的一些捆绑技能 | 通过 NPM 分发的外部扩展 |
-| 用于基线 UX | 用于可选功能 |
-| 新技能应先发布到 ClawHub | 首选 NPM 包路径 |
+| 特性 | Skills | Plugins |
+|------|--------|---------|
+| **分发方式** | 随核心一起发布 | 通过 NPM 分发 |
+| **用途** | 基线 UX | 可选功能 |
+| **新功能策略** | 先发布到 ClawHub | 首选 NPM 包路径 |
+| **更新频率** | 跟随核心版本 | 独立版本管理 |
+
+#### 插件开发门槛
+
+**有意加入核心的插件门槛很高**：
+- 必须是广泛使用的基础设施
+- 必须有稳定的 API 设计
+- 必须通过社区长期验证
+- 维护成本可控
+
+---
+
+### 8.5 运行时架构
+
+#### Node.js 版本要求
+
+| 环境 | 版本要求 | 说明 |
+|------|----------|------|
+| **运行时基线** | Node **22+** | 最低支持版本 |
+| **开发模式** | Bun 或 Node | Bun 用于 TypeScript 执行 |
+| **生产环境** | Node | 运行构建的输出（`dist/*`） |
+
+#### 依赖安装
+
+```bash
+# 使用 pnpm（首选）
+pnpm install
+
+# 或使用 Bun
+bun install
+
+# 不推荐 npm（可能出现锁文件问题）
+```
+
+#### CLI 命令体系
+
+| 命令 | 功能 | 示例 |
+|------|------|------|
+| `openclaw gateway` | 启动 Gateway 服务 | `openclaw gateway --port 18789` |
+| `openclaw dashboard` | 打开 Web 仪表板 | `openclaw dashboard` |
+| `openclaw status` | 查看本地状态 | `openclaw status --all` |
+| `openclaw health` | Gateway 健康检查 | `openclaw health --json` |
+| `openclaw channels login` | 登录渠道 | `openclaw channels login` |
+| `openclaw setup` | 初始化工作空间 | `openclaw setup` |
+
+#### Gateway 服务配置
+
+**默认端口**：18789
+
+**启动模式**：
+- **前台运行**：`openclaw gateway --port 18789`
+- **后台运行**：`nohup openclaw gateway --port 18789 > /tmp/openclaw-gateway.log 2>&1 &`
+
+**配置示例**：
+```json5
+{
+  gateway: {
+    mode: "local",    // 或 "remote"
+    port: 18789,
+  },
+}
+```
+
+#### 日志系统
+
+**日志位置**：`/tmp/openclaw/`
+
+**日志文件格式**：`openclaw-YYYY-MM-DD.log`
+
+**日志级别配置**：
+```json5
+{
+  logging: {
+    level: "info" | "debug" | "warn" | "error",
+  },
+}
+```
+
+---
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "module": "ai-orchestration",
-  "cache_date": "2026-03-09",
+  "cache_date": "2026-03-10",
   "source_urls": [
     "https://github.com/OpenClaw/openclaw",
     "https://docs.openclaw.ai"
@@ -12,7 +12,7 @@
     "guides.md",
     ".metadata.json"
   ],
-  "version": "1.0",
+  "version": "1.1",
   "description": "OpenClaw AI 编排平台知识缓存 - 包含项目概述、核心概念和使用指南",
   "topics_covered": [
     "OpenClaw 项目愿景和定位",
@@ -24,8 +24,18 @@
     "媒体处理",
     "安全配置",
     "插件系统",
-    "MCP 集成"
+    "MCP 集成",
+    "运行时架构",
+    "CLI 命令体系",
+    "项目治理规范"
   ],
   "language": "zh-CN",
-  "last_updated": "2026-03-09T00:00:00Z"
+  "last_updated": "2026-03-10T00:00:00Z",
+  "update_notes": [
+    "新增：项目治理和贡献规范",
+    "强化：插件系统深度知识（NPM分发、Skills vs Plugins）",
+    "新增：运行时架构细节（Node 22+、CLI命令、日志系统）",
+    "强化：安全配置最佳实践（allowFrom、两手机、心跳策略）",
+    "强化：媒体处理机制（入站/出站流程、配置、大小限制）"
+  ]
 }
