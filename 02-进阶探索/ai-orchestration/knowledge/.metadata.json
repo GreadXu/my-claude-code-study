@@ -1,6 +1,6 @@
 {
   "module": "ai-orchestration",
-  "cache_date": "2026-03-10",
+  "cache_date": "2026-03-11",
   "source_urls": [
     "https://github.com/OpenClaw/openclaw",
     "https://docs.openclaw.ai"
@@ -12,8 +12,8 @@
     "guides.md",
     ".metadata.json"
   ],
-  "version": "1.1",
-  "description": "OpenClaw AI 编排平台知识缓存 - 包含项目概述、核心概念和使用指南",
+  "version": "1.2",
+  "description": "OpenClaw AI 编排平台知识缓存 - 包含项目概述、核心概念、使用指南和仓库治理规范",
   "topics_covered": [
     "OpenClaw 项目愿景和定位",
     "Gateway 架构设计",
@@ -23,19 +23,22 @@
     "心跳系统",
     "媒体处理",
     "安全配置",
-    "插件系统",
-    "MCP 集成",
-    "运行时架构",
+    "插件系统（NPM 分发、ClawHub）",
+    "MCP 集成（mcporter 桥接）",
+    "运行时架构（Node 22+）",
     "CLI 命令体系",
-    "项目治理规范"
+    "项目治理规范",
+    "PR 提交规范",
+    "代码风格指南",
+    "测试规范"
   ],
   "language": "zh-CN",
-  "last_updated": "2026-03-10T00:00:00Z",
+  "last_updated": "2026-03-11T00:00:00Z",
   "update_notes": [
-    "新增：项目治理和贡献规范",
-    "强化：插件系统深度知识（NPM分发、Skills vs Plugins）",
-    "新增：运行时架构细节（Node 22+、CLI命令、日志系统）",
-    "强化：安全配置最佳实践（allowFrom、两手机、心跳策略）",
-    "强化：媒体处理机制（入站/出站流程、配置、大小限制）"
+    "新增：项目治理规范（PR 提交、代码风格、测试指南）",
+    "强化：插件系统 NPM 分发路径和 ClawHub 社区生态",
+    "明确：MCP 集成通过 mcporter 桥接的技术决策",
+    "新增：详细的贡献规则和仓库维护指南",
+    "新增：AGENTS.md 仓库规范和 Agent 工作指南"
   ]
 }
