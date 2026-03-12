@@ -32,6 +32,51 @@
 
 ---
 
+## [4.0.2] - 2026-03-12
+
+### [Core] 学习系统技能触发关键词优化
+
+- 🎯 **优化触发关键词，提高技能触发准确性**
+  - **learn-goal-creator**：移除过于宽泛的 "学..." 触发词，"新目标" → "新学习目标"
+  - **learn-goal-tracker**：统一使用 "学习目标" 替代 "目标"，消除歧义
+  - **learn-module-manager**：移除 "我要学..." 避免与 goal-creator 冲突
+  - **learn-status**：移除 "目标状态"、"当前目标" 归入 goal-tracker
+  - **learn-tools**：新增 "继续书签"、"完成书签" 触发词
+
+- 📝 **更新文档**
+  - CLAUDE.md 快速参考表格更新为新的触发词
+  - learn-goal-creator 添加 "我要学..." 路由判断说明
+  - 所有技能 description 更新为精确的触发关键词
+
+- ⚡ **优化效果**
+  - 消除技能间关键词重叠
+  - 每个触发词唯一指向一个技能
+  - 减少误触发，提高 AI 判断准确性
+
+---
+
+## [4.0.1] - 2026-03-12
+
+### [Core] 学习系统技能统一命名
+
+- 🏷️ **技能命名统一为 `learn-*` 前缀**
+  - `goal-creator` → `learn-goal-creator`
+  - `goal-tracker` → `learn-goal-tracker`
+  - `learning-manager` → `learn-module-manager`
+  - `learning-status` → `learn-status`
+  - `learning-tools` → `learn-tools`
+
+- 📝 **统一技能描述格式**
+  - 采用统一模板：`学习系统 - <功能简述>（<按需/常驻>）- <功能列表>。v4.0 <特性>。当用户说...时触发此技能。`
+  - 所有技能描述以 "学习系统 - " 开头
+  - 统一使用（按需加载）/（常驻技能）标识
+
+- 📚 **更新 CLAUDE.md 引用**
+  - 项目结构中的技能目录更新
+  - Skill 协作表更新为新的技能名称
+
+---
+
 ## [4.0.0] - 2026-03-12
 
 ### [Core] 学习目标导向架构 - 重大重构
