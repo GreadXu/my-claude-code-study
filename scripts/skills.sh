@@ -161,7 +161,7 @@ check_course_updates() {
     local outdated_count=0
 
     # 遍历所有缓存目录
-    for metadata_file in .learning/cache/courses/*/.metadata.json .learning/cache/shared/*/.metadata.json 2>/dev/null; do
+    for metadata_file in .learning/cache/courses/*/.metadata.json .learning/cache/shared/*/.metadata.json; do
         if [ -f "$metadata_file" ]; then
             ((cache_count++))
             local cache_date=$(jq -r '.cache_date // "unknown"' "$metadata_file" 2>/dev/null)
