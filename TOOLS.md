@@ -22,9 +22,7 @@
 
 ### 技能目录
 
-- 学习工具: `skills/learning-tools/`
-- 进度管理: `skills/learning-manager/`
-- 状态查询: `skills/learning-status/`
+- 技能发现: `skills/find-skills/`
 - 技能创建: `skills/skill-creator/`
 
 ### Git 配置

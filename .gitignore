@@ -57,4 +57,4 @@ personal-notes/
 !.templates/**/*.md
 !.templates/**/*.js
 !.templates/**/*.json
-.learning/
+

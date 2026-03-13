@@ -27,10 +27,8 @@
 ├── 02-进阶探索/       # 进阶模块
 ├── 03-实战应用/       # 实战项目
 ├── skills/            # OpenClaw 技能目录（独立）
-│   ├── learning-tools/    # 书签、缓存、同步
-│   ├── learning-manager/  # 进度管理
-│   ├── learning-status/   # 状态查询
-│   └── skill-creator/     # 技能创建工具
+│   ├── find-skills/       # 技能发现工具
+│   └── skill-creator/     # 技能创建与评估工具
 ├── .openclaw/         # OpenClaw 项目配置
 │   └── update-config.json # 更新检查配置
 ├── .claude/           # Claude Code 遗留配置（可删除）
@@ -42,15 +40,8 @@
 
 星火的技能位于 `skills/` 目录，是 OpenClaw 标准格式：
 
-- **learning-tools** — 书签管理、知识缓存、同步管理、模块管理
-- **learning-manager** — 学习生命周期管理、缓存检查
-- **learning-status** — 状态查询、进度更新、共享机制
+- **find-skills** — 技能发现与搜索工具
 - **skill-creator** — 技能创建与评估工具
-
-触发方式：
-- "创建书签"、"继续书签"、"初始化缓存"、"刷新缓存"
-- "查看学习状态"、"进度怎么样"、"更新进度"
-- "开始学习"、"完成学习"、"重置模块"
 
 ## 安全
 

@@ -1,0 +1,38 @@
+{
+  "skills": {
+    "learning-status": {
+      "version": "4.0.0",
+      "source": "local",
+      "last_check": null,
+      "auto_update": false
+    },
+    "learning-manager": {
+      "version": "4.0.0",
+      "source": "local",
+      "last_check": null,
+      "auto_update": false
+    },
+    "learning-tools": {
+      "version": "4.0.0",
+      "source": "local",
+      "last_check": null,
+      "auto_update": false
+    },
+    "goal-tracker": {
+      "version": "4.0.0",
+      "source": "local",
+      "last_check": null,
+      "auto_update": false
+    },
+    "goal-creator": {
+      "version": "4.0.0",
+      "source": "local",
+      "last_check": null,
+      "auto_update": false
+    }
+  },
+  "courses": {
+    "auto_update_check": true,
+    "update_interval_hours": 24
+  }
+}
